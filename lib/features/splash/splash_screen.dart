@@ -21,15 +21,21 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _checkInitialRoute() async {
-    await Future.delayed(const Duration(seconds: 3));
-    if (!mounted) return;
-    final prefs = await SharedPreferences.getInstance();
-    final seenOnboarding = prefs.getBool('seen_onboarding') ?? false;
-    if (mounted) {
-      if (seenOnboarding) {
+    try {
+      await Future.delayed(const Duration(seconds: 3));
+      if (!mounted) return;
+      final prefs = await SharedPreferences.getInstance();
+      final seenOnboarding = prefs.getBool('seen_onboarding') ?? false;
+      if (mounted) {
+        if (seenOnboarding) {
+          context.go('/home');
+        } else {
+          context.go('/onboarding');
+        }
+      }
+    } catch (_) {
+      if (mounted) {
         context.go('/home');
-      } else {
-        context.go('/onboarding');
       }
     }
   }

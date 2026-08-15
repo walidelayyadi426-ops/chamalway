@@ -24,22 +24,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'city': 'Chefchaouen',
       'title': 'The Blue Pearl of Morocco',
-      'image': 'https://images.unsplash.com/photo-1548013146-72479768bada?w=1000',
+      'image':
+          'https://images.unsplash.com/photo-1548013146-72479768bada?w=1000',
     },
     {
       'city': 'Tangier',
       'title': 'Bride of the North & Gateway to Africa',
-      'image': 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1000',
+      'image':
+          'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1000',
     },
     {
       'city': 'Akchour',
       'title': 'Enchanted Waterfalls & Mountains',
-      'image': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1000',
+      'image':
+          'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1000',
     },
     {
       'city': 'Al Hoceima',
       'title': 'Mediterranean Sapphire Coast',
-      'image': 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000',
+      'image':
+          'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000',
     },
   ];
 
@@ -109,7 +113,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
-                                color: AppColors.secondary.withValues(alpha: 0.2),
+                                color:
+                                    AppColors.secondary.withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: const Row(
@@ -170,7 +175,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.06),
+                          color: Colors.black
+                              .withValues(alpha: isDark ? 0.3 : 0.06),
                           blurRadius: 16,
                           offset: const Offset(0, 4),
                         ),
@@ -185,13 +191,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       children: [
                         const Icon(Icons.search, color: AppColors.primary),
                         const SizedBox(width: 12),
-                        Text(
-                          'Search beaches, mountains, restaurants...',
-                          style: TextStyle(
-                            color: isDark
-                                ? AppColors.textSecondaryDark
-                                : AppColors.textSecondaryLight,
-                            fontSize: 14,
+                        Expanded(
+                          child: Text(
+                            'Search beaches, mountains, restaurants...',
+                            style: TextStyle(
+                              color: isDark
+                                  ? AppColors.textSecondaryDark
+                                  : AppColors.textSecondaryLight,
+                              fontSize: 14,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
