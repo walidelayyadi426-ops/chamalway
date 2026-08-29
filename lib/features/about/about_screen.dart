@@ -42,10 +42,31 @@ class AboutScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
                 const Text(
-                  'Version 1.0.0 • Premium Edition',
+                  'Version 1.0.0 • Guide Touristique',
                   style: TextStyle(color: Colors.grey, fontSize: 12),
                 ),
               ],
+            ),
+          ),
+
+          const SizedBox(height: 28),
+
+          // About Project Description
+          const Text(
+            '📌 À propos du projet',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.cardDark : AppColors.cardLight,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Text(
+              'Chamal Way est votre guide touristique interactif pour découvrir toutes les richesses du Nord du Maroc. '
+              'Explorez les ruelles bleues de Chefchaouen, les magnifiques plages de Tanger, Martil et Al Hoceima, les cascades féeriques d\'Akchour ainsi que le riche patrimoine historique de la région.',
+              style: TextStyle(fontSize: 14, height: 1.5),
             ),
           ),
 

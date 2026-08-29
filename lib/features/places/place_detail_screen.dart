@@ -4,9 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/widgets/rating_stars.dart';
 import '../../data/repositories/destination_repository.dart';
-import '../../data/datasource/morocco_dummy_data.dart';
 
 class PlaceDetailScreen extends ConsumerWidget {
   final String placeId;
@@ -63,9 +61,13 @@ class PlaceDetailScreen extends ConsumerWidget {
                 backgroundColor: Colors.black45,
                 child: IconButton(
                   icon: const Icon(Icons.share, color: Colors.white),
-                  onPressed: () {
-                    Share.share(
-                      'Check out ${place.name} in ${place.city} on ChamalWay! Download the app to explore Northern Morocco.',
+                  onPressed: () async {
+                    final text = '${place.name} (${place.city})\n\n'
+                        '${place.description}\n\n'
+                        'Découvrez le Nord du Maroc avec l\'application Chamal Way !';
+                    await Share.share(
+                      text,
+                      subject: place.name,
                     );
                   },
                 ),
@@ -323,69 +325,7 @@ class PlaceDetailScreen extends ConsumerWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 28),
-
-                  // Customer Reviews Section
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Visitor Reviews',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text('Write Review',
-                            style: TextStyle(color: AppColors.primary)),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  ...MoroccoDummyData.sampleReviews.map((rev) {
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 12),
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        color:
-                            isDark ? AppColors.cardDark : AppColors.cardLight,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              CircleAvatar(
-                                backgroundImage: NetworkImage(rev.userAvatar),
-                                radius: 18,
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(rev.userName,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    Text(rev.date,
-                                        style: const TextStyle(
-                                            fontSize: 11, color: Colors.grey)),
-                                  ],
-                                ),
-                              ),
-                              RatingStars(rating: rev.rating, iconSize: 14),
-                            ],
-                          ),
-                          const SizedBox(height: 10),
-                          Text(rev.comment,
-                              style: const TextStyle(fontSize: 13)),
-                        ],
-                      ),
-                    );
-                  }),
-
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 24),
                 ],
               ),
             ),

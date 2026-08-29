@@ -234,24 +234,5 @@ class MoroccoDummyData {
     ),
   ];
 
-  static const List<ReviewModel> sampleReviews = [
-    ReviewModel(
-      id: 'r1',
-      userName: 'Amine El Amrani',
-      userAvatar: 'https://i.pravatar.cc/150?img=11',
-      rating: 5.0,
-      date: '2 days ago',
-      comment:
-          'Unbelievable experience! The blue alleys in Chefchaouen are pure magic. Make sure to visit early in the morning for the best lighting!',
-    ),
-    ReviewModel(
-      id: 'r2',
-      userName: 'Sophie Laurent',
-      userAvatar: 'https://i.pravatar.cc/150?img=32',
-      rating: 4.8,
-      date: '1 week ago',
-      comment:
-          'Akchour was breathtaking. The hike up to God’s Bridge is so refreshing with cold water springs everywhere!',
-    ),
-  ];
+  static const List<ReviewModel> sampleReviews = [];
 }

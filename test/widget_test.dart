@@ -16,5 +16,8 @@ void main() {
 
     // Verify ChamalWay loads splash screen / app title
     expect(find.textContaining('ChamalWay'), findsWidgets);
+
+    // Advance timer past splash screen navigation delay to ensure clean test tear down
+    await tester.pump(const Duration(seconds: 4));
   });
 }

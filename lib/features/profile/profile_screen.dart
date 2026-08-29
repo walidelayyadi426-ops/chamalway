@@ -20,7 +20,7 @@ class ProfileScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            // User Header Avatar
+            // User Header Avatar (Generic Silhouette Avatar)
             Center(
               child: Column(
                 children: [
@@ -28,9 +28,11 @@ class ProfileScreen extends ConsumerWidget {
                     children: [
                       CircleAvatar(
                         radius: 50,
-                        backgroundColor: AppColors.primary.withValues(alpha: 0.2),
-                        backgroundImage: const NetworkImage(
-                          'https://i.pravatar.cc/300?img=12',
+                        backgroundColor: AppColors.primary.withValues(alpha: 0.15),
+                        child: const Icon(
+                          Icons.person,
+                          size: 54,
+                          color: AppColors.primary,
                         ),
                       ),
                       Positioned(
@@ -64,7 +66,7 @@ class ProfileScreen extends ConsumerWidget {
 
             const SizedBox(height: 24),
 
-            // Statistics Row Cards
+            // Statistics Row Cards (Visited Places & Saved Favorites only)
             Row(
               children: [
                 Expanded(
@@ -84,16 +86,6 @@ class ProfileScreen extends ConsumerWidget {
                     label: 'Saved Favorites',
                     icon: Icons.favorite_border,
                     color: AppColors.favorite,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: _buildStatCard(
-                    context,
-                    title: '4',
-                    label: 'Badges Earned',
-                    icon: Icons.military_tech_outlined,
-                    color: AppColors.secondary,
                   ),
                 ),
               ],
@@ -121,10 +113,20 @@ class ProfileScreen extends ConsumerWidget {
                       },
                     ),
                   ),
+                  const Divider(height: 1),
                   ListTile(
-                    leading: const Icon(Icons.help_outline,
+                    leading: const Icon(Icons.info_outline,
+                        color: AppColors.primary),
+                    title: const Text('À propos de Chamal Way'),
+                    subtitle: const Text('Guide touristique du Nord du Maroc'),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => context.push('/about'),
+                  ),
+                  const Divider(height: 1),
+                  ListTile(
+                    leading: const Icon(Icons.phone_in_talk_outlined,
                         color: AppColors.secondary),
-                    title: const Text('Emergency Contacts & Tools'),
+                    title: const Text('Urgences & Conseils Voyage'),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => context.push('/about'),
                   ),

@@ -52,6 +52,8 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Nous utilisons votre position pour vous montrer les destinations proches de vous.</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>https</string>
