@@ -32,17 +32,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     {
       'title': 'Traditional Food',
       'subtitle': 'Savor fresh seafood pastilla, tagines, and traditional Northern mint tea overlooking ocean views.',
-      'image': 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000',
+      'image': 'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=1000',
     },
     {
       'title': 'Historical Places',
       'subtitle': 'Explore Chefchaouen blue medina, Tangier Kasbah, Hercules Caves, and Portuguese ramparts in Asilah.',
-      'image': 'https://images.unsplash.com/photo-1548013146-72479768bada?w=1000',
+      'image': 'https://images.unsplash.com/photo-1730581822492-8a55ce0b7fde?fm=jpg&q=60&w=1200&auto=format&fit=crop',
     },
     {
       'title': 'Start Exploring',
       'subtitle': 'Your personal guide to Northern Morocco. Custom trip itineraries, offline maps, and local secrets.',
-      'image': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1000',
+      'image': 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1000',
     },
   ];
 

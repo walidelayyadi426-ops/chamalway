@@ -25,25 +25,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'city': 'Chefchaouen',
       'title': 'The Blue Pearl of Morocco',
       'image':
-          'https://images.unsplash.com/photo-1548013146-72479768bada?w=1000',
+          'https://images.unsplash.com/photo-1730581822492-8a55ce0b7fde?fm=jpg&q=60&w=1200&auto=format&fit=crop',
     },
     {
       'city': 'Tangier',
       'title': 'Bride of the North & Gateway to Africa',
       'image':
-          'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1000',
+          'https://images.unsplash.com/photo-1682972443789-5ee7299bb2cb?fm=jpg&q=60&w=1200&auto=format&fit=crop',
     },
     {
       'city': 'Akchour',
       'title': 'Enchanted Waterfalls & Mountains',
       'image':
-          'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1000',
+          'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1000',
     },
     {
       'city': 'Al Hoceima',
       'title': 'Mediterranean Sapphire Coast',
       'image':
-          'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000',
+          'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=1000',
     },
   ];
 

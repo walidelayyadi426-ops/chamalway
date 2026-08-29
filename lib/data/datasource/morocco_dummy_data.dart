@@ -16,21 +16,21 @@ class MoroccoDummyData {
       id: 'mountains',
       title: 'Mountains',
       icon: Icons.landscape,
-      imageBg: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b',
+      imageBg: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9',
       count: 9,
     ),
     CategoryModel(
       id: 'history',
       title: 'History',
       icon: Icons.account_balance,
-      imageBg: 'https://images.unsplash.com/photo-1548013146-72479768bada',
+      imageBg: 'https://images.unsplash.com/photo-1730581822492-8a55ce0b7fde?fm=jpg&q=60&w=1200&auto=format&fit=crop',
       count: 18,
     ),
     CategoryModel(
       id: 'restaurants',
       title: 'Restaurants',
       icon: Icons.restaurant,
-      imageBg: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
+      imageBg: 'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae',
       count: 25,
     ),
     CategoryModel(
@@ -51,7 +51,7 @@ class MoroccoDummyData {
       id: 'shopping',
       title: 'Shopping',
       icon: Icons.shopping_bag,
-      imageBg: 'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a',
+      imageBg: 'https://images.unsplash.com/photo-155529669-e69e7aa0ba9a',
       count: 12,
     ),
   ];
@@ -66,11 +66,11 @@ class MoroccoDummyData {
       reviewCount: 1420,
       distance: '1.2 km from city center',
       priceRange: 'Free Access',
-      heroImage: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=1000',
+      heroImage: 'https://images.unsplash.com/photo-1730581822492-8a55ce0b7fde?fm=jpg&q=60&w=1200&auto=format&fit=crop',
       gallery: [
-        'https://images.unsplash.com/photo-1548013146-72479768bada?w=800',
-        'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800',
-        'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800',
+        'https://images.unsplash.com/photo-1730581822492-8a55ce0b7fde?fm=jpg&q=60&w=1200&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800',
+        'https://images.unsplash.com/photo-1579282240050-352db0a14c21?w=800',
       ],
       description:
           'Chefchaouen is famous for its striking blue-washed buildings nestled in the Rif Mountains. Stroll through narrow cobblestone alleys adorned with colorful pottery, handwoven blankets, and blooming plant pots.',
@@ -93,10 +93,10 @@ class MoroccoDummyData {
       reviewCount: 980,
       distance: '30 km from Chefchaouen',
       priceRange: 'Free Nature Reserve',
-      heroImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1000',
+      heroImage: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1000',
       gallery: [
-        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800',
         'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=800',
+        'https://images.unsplash.com/photo-1511497584788-876761c119ef?w=800',
       ],
       description:
           'A spectacular natural canyon with emerald natural pools, lush green foliage, towering cliff walls, and the iconic limestone rock arch known as God’s Bridge.',
@@ -118,10 +118,10 @@ class MoroccoDummyData {
       reviewCount: 1650,
       distance: '14 km from Tangier Center',
       priceRange: '10 MAD Entry',
-      heroImage: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1000',
+      heroImage: 'https://images.unsplash.com/photo-1682972443789-5ee7299bb2cb?fm=jpg&q=60&w=1200&auto=format&fit=crop',
       gallery: [
-        'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800',
-        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
+        'https://images.unsplash.com/photo-1682972443789-5ee7299bb2cb?fm=jpg&q=60&w=1200&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800',
       ],
       description:
           'An archaeological cave complex situated right on the Atlantic coast. The sea opening resembles an inverted map of Africa, making it one of Tangier’s most iconic landmarks.',
@@ -146,7 +146,7 @@ class MoroccoDummyData {
       heroImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000',
       gallery: [
         'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
-        'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800',
+        'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800',
       ],
       description:
           'Crystal-clear turquoise waters and soft golden sand overlooking the Gibraltar Strait. Dalia Beach is renowned for its tranquil atmosphere and fresh local grilled fish stalls.',
@@ -172,6 +172,7 @@ class MoroccoDummyData {
       heroImage: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1000',
       gallery: [
         'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800',
+        'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800',
       ],
       description:
           'A vibrant coastal town boasting a wide palm-lined promenade, golden sandy beaches, lively summer festivals, and sea-view ice cream parlors.',
@@ -193,9 +194,10 @@ class MoroccoDummyData {
       reviewCount: 620,
       distance: '0.8 km from Port',
       priceRange: '\$\$ - Luxury Dining',
-      heroImage: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000',
+      heroImage: 'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=1000',
       gallery: [
-        'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800',
+        'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=800',
+        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800',
       ],
       description:
           'Premier oceanfront dining serving daily catches of wild Mediterranean sea bass, king prawns, seafood pastilla, and traditional saffron rice.',
@@ -217,9 +219,10 @@ class MoroccoDummyData {
       reviewCount: 890,
       distance: 'City Coast',
       priceRange: 'Free Public Beach',
-      heroImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1000',
+      heroImage: 'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=1000',
       gallery: [
-        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
+        'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=800',
+        'https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?w=800',
       ],
       description:
           'Framed by majestic limestone cliffs, Quemado Beach offers azure waters, jet-ski rentals, scuba diving expeditions, and luxury resort amenities.',
