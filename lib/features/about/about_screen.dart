@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_constants.dart';
 
@@ -116,43 +115,7 @@ class AboutScreen extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 28),
 
-          // Emergency Numbers List
-          const Text(
-            '🚨 Emergency Numbers in Morocco',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          Container(
-            decoration: BoxDecoration(
-              color: isDark ? AppColors.cardDark : AppColors.cardLight,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              children: AppConstants.emergencyNumbers.entries.map((entry) {
-                return ListTile(
-                  leading: const Icon(Icons.phone_in_talk,
-                      color: AppColors.favorite),
-                  title: Text(entry.key),
-                  trailing: Text(
-                    entry.value,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                  onTap: () {
-                    final phoneUri = Uri.parse('tel:${entry.value}');
-                    launchUrl(phoneUri);
-                  },
-                );
-              }).toList(),
-            ),
-          ),
-
-          const SizedBox(height: 28),
 
           // Local Travel Tips
           const Text(

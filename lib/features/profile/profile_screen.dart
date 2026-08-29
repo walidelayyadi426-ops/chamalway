@@ -128,7 +128,7 @@ class ProfileScreen extends ConsumerWidget {
                         color: AppColors.secondary),
                     title: const Text('Urgences & Conseils Voyage'),
                     trailing: const Icon(Icons.chevron_right),
-                    onTap: () => context.push('/about'),
+                    onTap: () => context.push('/emergency'),
                   ),
                 ],
               ),

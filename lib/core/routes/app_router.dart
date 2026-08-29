@@ -10,6 +10,7 @@ import '../../features/restaurants/restaurants_screen.dart';
 import '../../features/hotels/hotels_screen.dart';
 import '../../features/settings/settings_screen.dart';
 import '../../features/about/about_screen.dart';
+import '../../features/emergency/emergency_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -73,6 +74,10 @@ class AppRouter {
       GoRoute(
         path: '/about',
         builder: (context, state) => const AboutScreen(),
+      ),
+      GoRoute(
+        path: '/emergency',
+        builder: (context, state) => const EmergencyScreen(),
       ),
     ],
   );

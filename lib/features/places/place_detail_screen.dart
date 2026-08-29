@@ -57,20 +57,29 @@ class PlaceDetailScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              CircleAvatar(
-                backgroundColor: Colors.black45,
-                child: IconButton(
-                  icon: const Icon(Icons.share, color: Colors.white),
-                  onPressed: () async {
-                    final text = '${place.name} (${place.city})\n\n'
-                        '${place.description}\n\n'
-                        'Découvrez le Nord du Maroc avec l\'application Chamal Way !';
-                    await Share.share(
-                      text,
-                      subject: place.name,
-                    );
-                  },
-                ),
+              Builder(
+                builder: (context) {
+                  return CircleAvatar(
+                    backgroundColor: Colors.black45,
+                    child: IconButton(
+                      icon: const Icon(Icons.share, color: Colors.white),
+                      onPressed: () async {
+                        final box = context.findRenderObject() as RenderBox?;
+                        final Rect? sharePositionOrigin = box != null
+                            ? box.localToGlobal(Offset.zero) & box.size
+                            : null;
+                        final text = '${place.name} (${place.city})\n\n'
+                            '${place.description}\n\n'
+                            'Découvrez le Nord du Maroc avec l\'application Chamal Way !';
+                        await Share.share(
+                          text,
+                          subject: place.name,
+                          sharePositionOrigin: sharePositionOrigin,
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
               const SizedBox(width: 16),
             ],
