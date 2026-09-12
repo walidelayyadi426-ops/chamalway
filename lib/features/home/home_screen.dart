@@ -85,7 +85,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            // Header: Location, Greeting, Live Weather & Notifications
+            // Header: Greeting & Notifications
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
@@ -95,45 +95,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // Location & Weather Pill
-                        Row(
-                          children: [
-                            const Icon(Icons.near_me,
-                                color: AppColors.primary, size: 20),
-                            const SizedBox(width: 6),
-                            const Text(
-                              'Tangier, Morocco',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 4),
-                              decoration: BoxDecoration(
-                                color:
-                                    AppColors.secondary.withValues(alpha: 0.2),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const Row(
-                                children: [
-                                  Icon(Icons.wb_sunny,
-                                      size: 14, color: AppColors.secondary),
-                                  SizedBox(width: 4),
-                                  Text(
-                                    '26°C Sunny',
-                                    style: TextStyle(
-                                      color: AppColors.secondary,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                        const Text(
+                          'Salam! Explore the North 🇲🇦',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         // Notification Bell Icon
                         IconButton(
@@ -147,14 +114,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           },
                         ),
                       ],
-                    ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'Salam! Explore the North 🇲🇦',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ],
                 ),

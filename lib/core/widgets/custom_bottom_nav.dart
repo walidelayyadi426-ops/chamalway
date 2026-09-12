@@ -19,7 +19,7 @@ class CustomBottomNav extends StatelessWidget {
       {'icon': Icons.home_rounded, 'label': 'Home'},
       {'icon': Icons.explore_rounded, 'label': 'Explore'},
       {'icon': Icons.favorite_rounded, 'label': 'Favorites'},
-      {'icon': Icons.person_rounded, 'label': 'Profile'},
+      {'icon': Icons.settings_rounded, 'label': 'Settings'},
     ];
 
     return Container(

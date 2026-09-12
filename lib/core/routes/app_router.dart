@@ -8,7 +8,6 @@ import '../../features/mountains/mountains_screen.dart';
 import '../../features/historical/historical_screen.dart';
 import '../../features/restaurants/restaurants_screen.dart';
 import '../../features/hotels/hotels_screen.dart';
-import '../../features/settings/settings_screen.dart';
 import '../../features/about/about_screen.dart';
 import '../../features/emergency/emergency_screen.dart';
 
@@ -35,10 +34,6 @@ class AppRouter {
       GoRoute(
         path: '/favorites',
         builder: (context, state) => const MainLayoutScreen(initialIndex: 2),
-      ),
-      GoRoute(
-        path: '/profile',
-        builder: (context, state) => const MainLayoutScreen(initialIndex: 3),
       ),
       GoRoute(
         path: '/place/:id',
@@ -69,7 +64,7 @@ class AppRouter {
       ),
       GoRoute(
         path: '/settings',
-        builder: (context, state) => const SettingsScreen(),
+        builder: (context, state) => const MainLayoutScreen(initialIndex: 3),
       ),
       GoRoute(
         path: '/about',

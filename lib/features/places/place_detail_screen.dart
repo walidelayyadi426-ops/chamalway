@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../data/repositories/destination_repository.dart';
 
@@ -55,31 +53,6 @@ class PlaceDetailScreen extends ConsumerWidget {
                         .toggleFavorite(place.id);
                   },
                 ),
-              ),
-              const SizedBox(width: 8),
-              Builder(
-                builder: (context) {
-                  return CircleAvatar(
-                    backgroundColor: Colors.black45,
-                    child: IconButton(
-                      icon: const Icon(Icons.share, color: Colors.white),
-                      onPressed: () async {
-                        final box = context.findRenderObject() as RenderBox?;
-                        final Rect? sharePositionOrigin = box != null
-                            ? box.localToGlobal(Offset.zero) & box.size
-                            : null;
-                        final text = '${place.name} (${place.city})\n\n'
-                            '${place.description}\n\n'
-                            'Découvrez le Nord du Maroc avec l\'application Chamal Way !';
-                        await Share.share(
-                          text,
-                          subject: place.name,
-                          sharePositionOrigin: sharePositionOrigin,
-                        );
-                      },
-                    ),
-                  );
-                },
               ),
               const SizedBox(width: 16),
             ],
@@ -277,61 +250,6 @@ class PlaceDetailScreen extends ConsumerWidget {
                             : AppColors.cardLight,
                       );
                     }).toList(),
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  // Location & Map Preview Card
-                  const Text(
-                    'Location & Navigation',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
-                    height: 160,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: const DecorationImage(
-                        image: NetworkImage(
-                            'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black45,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Center(
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            final lat = place.coordinates['lat'];
-                            final lng = place.coordinates['lng'];
-                            final url = Uri.parse(
-                                'https://www.google.com/maps/search/?api=1&query=$lat,$lng');
-                            launchUrl(url,
-                                mode: LaunchMode.externalApplication);
-                          },
-                          icon: const Icon(Icons.directions,
-                              color: Colors.white),
-                          label: const Text(
-                            'Get Directions on Google Maps',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primary,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 12),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                   ),
 
                   const SizedBox(height: 24),

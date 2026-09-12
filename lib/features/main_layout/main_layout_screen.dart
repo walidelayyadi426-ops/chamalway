@@ -3,7 +3,7 @@ import '../../core/widgets/custom_bottom_nav.dart';
 import '../home/home_screen.dart';
 import '../search/search_screen.dart';
 import '../favorites/favorites_screen.dart';
-import '../profile/profile_screen.dart';
+import '../settings/settings_screen.dart';
 
 class MainLayoutScreen extends StatefulWidget {
   final int initialIndex;
@@ -21,7 +21,7 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
     HomeScreen(),
     SearchScreen(),
     FavoritesScreen(),
-    ProfileScreen(),
+    SettingsScreen(),
   ];
 
   @override
