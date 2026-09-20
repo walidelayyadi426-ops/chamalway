@@ -1,17 +1,13 @@
 class AppConstants {
   static const String appName = 'ChamalWay';
-  static const String appTagline = 'Explore the North Like Never Before.';
-  static const String regionName = 'Northern Morocco';
+  static const String appTagline = 'Northern Morocco Travel Companion';
+  static const int kMinPlacesPerCategory = 6;
+  static const String placesJsonPath = 'assets/data/places.json';
 
-  // Supported Languages
-  static const List<Map<String, String>> supportedLanguages = [
-    {'code': 'en', 'name': 'English', 'flag': '🇬🇧'},
-  ];
-
-  // Emergency Numbers
   static const Map<String, String> emergencyNumbers = {
-    'Police': '19',
-    'Gendarmerie': '177',
-    'Ambulance & Fire': '15',
+    'Police (Police Secours)': '19',
+    'Gendarmerie Royale': '177',
+    'Ambulance & Sapeurs-Pompiers': '15',
+    'Assistance Médicale Urgente (SAMU)': '141',
   };
 }

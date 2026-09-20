@@ -18,12 +18,13 @@ class CustomBottomNav extends StatelessWidget {
     final items = [
       {'icon': Icons.home_rounded, 'label': 'Home'},
       {'icon': Icons.explore_rounded, 'label': 'Explore'},
+      {'icon': Icons.map_rounded, 'label': 'Map'},
+      {'icon': Icons.luggage_rounded, 'label': 'My Trip'},
       {'icon': Icons.favorite_rounded, 'label': 'Favorites'},
-      {'icon': Icons.settings_rounded, 'label': 'Settings'},
     ];
 
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 0, 16, 20),
+      margin: const EdgeInsets.fromLTRB(12, 0, 12, 20),
       height: 68,
       decoration: BoxDecoration(
         color: isDark ? AppColors.cardDark : AppColors.cardLight,
@@ -51,7 +52,7 @@ class CustomBottomNav extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 250),
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               decoration: isSelected
                   ? BoxDecoration(
                       color: AppColors.primary.withValues(alpha: 0.15),
@@ -67,16 +68,16 @@ class CustomBottomNav extends StatelessWidget {
                         : (isDark
                             ? AppColors.textSecondaryDark
                             : AppColors.textSecondaryLight),
-                    size: 24,
+                    size: 22,
                   ),
                   if (isSelected) ...[
-                    const SizedBox(width: 6),
+                    const SizedBox(width: 4),
                     Text(
                       item['label'] as String,
                       style: const TextStyle(
                         color: AppColors.primary,
                         fontWeight: FontWeight.bold,
-                        fontSize: 13,
+                        fontSize: 12,
                       ),
                     ),
                   ],

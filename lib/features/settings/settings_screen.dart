@@ -46,7 +46,7 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: 4),
                   const Text(
-                    'Guide Touristique du Nord du Maroc',
+                    'Northern Morocco Travel Guide',
                     style: TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                 ],
@@ -67,7 +67,7 @@ class SettingsScreen extends ConsumerWidget {
                     leading: const Icon(Icons.dark_mode_outlined,
                         color: AppColors.primary),
                     title: const Text('Dark Theme'),
-                    subtitle: const Text('Activer ou désactiver le mode sombre'),
+                    subtitle: const Text('Toggle light or dark appearance'),
                     trailing: Switch(
                       value: isDark,
                       activeTrackColor: AppColors.primary,
@@ -80,8 +80,8 @@ class SettingsScreen extends ConsumerWidget {
                   ListTile(
                     leading: const Icon(Icons.info_outline,
                         color: AppColors.primary),
-                    title: const Text('À propos de Chamal Way'),
-                    subtitle: const Text('Guide touristique du Nord du Maroc'),
+                    title: const Text('About Chamal Way'),
+                    subtitle: const Text('Travel guide to Northern Morocco'),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => context.push('/about'),
                   ),
@@ -89,11 +89,22 @@ class SettingsScreen extends ConsumerWidget {
                   ListTile(
                     leading: const Icon(Icons.phone_in_talk_outlined,
                         color: AppColors.secondary),
-                    title: const Text('Urgences & Conseils Voyage'),
-                    subtitle: const Text('Numéros utiles et informations de sécurité'),
+                    title: const Text('Emergency & Travel Tips'),
+                    subtitle: const Text('Useful contacts and safety information'),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => context.push('/emergency'),
                   ),
+                  if (ref.watch(destinationRepositoryProvider).getAllPlaces().any((p) => p.imageCredits.isNotEmpty)) ...[
+                    const Divider(height: 1),
+                    ListTile(
+                      leading: const Icon(Icons.camera_alt_outlined,
+                          color: AppColors.primary),
+                      title: const Text('Photo Credits'),
+                      subtitle: const Text('Photo sources and attributions'),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () => context.push('/credits'),
+                    ),
+                  ],
                 ],
               ),
             ),

@@ -105,6 +105,7 @@ class ProfileScreen extends ConsumerWidget {
                     leading: const Icon(Icons.dark_mode_outlined,
                         color: AppColors.primary),
                     title: const Text('Dark Theme'),
+                    subtitle: const Text('Toggle light or dark appearance'),
                     trailing: Switch(
                       value: isDark,
                       activeTrackColor: AppColors.primary,
@@ -117,8 +118,8 @@ class ProfileScreen extends ConsumerWidget {
                   ListTile(
                     leading: const Icon(Icons.info_outline,
                         color: AppColors.primary),
-                    title: const Text('À propos de Chamal Way'),
-                    subtitle: const Text('Guide touristique du Nord du Maroc'),
+                    title: const Text('About Chamal Way'),
+                    subtitle: const Text('Travel guide to Northern Morocco'),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => context.push('/about'),
                   ),
@@ -126,7 +127,8 @@ class ProfileScreen extends ConsumerWidget {
                   ListTile(
                     leading: const Icon(Icons.phone_in_talk_outlined,
                         color: AppColors.secondary),
-                    title: const Text('Urgences & Conseils Voyage'),
+                    title: const Text('Emergency & Travel Tips'),
+                    subtitle: const Text('Useful contacts and safety information'),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => context.push('/emergency'),
                   ),

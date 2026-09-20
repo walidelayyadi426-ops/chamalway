@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/widgets/place_card.dart';
+import '../../core/widgets/empty_state.dart';
+import '../../core/widgets/add_to_trip_sheet.dart';
 import '../../data/repositories/destination_repository.dart';
 
 class FavoritesScreen extends ConsumerWidget {
@@ -11,11 +13,10 @@ class FavoritesScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final favorites = ref.watch(favoritesProvider);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('❤️ Saved Favorites'),
+        title: const Text('Saved Favorites'),
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 16),
@@ -42,42 +43,13 @@ class FavoritesScreen extends ConsumerWidget {
         ],
       ),
       body: favorites.isEmpty
-          ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.favorite_border,
-                    size: 80,
-                    color: isDark ? Colors.grey[700] : Colors.grey[300],
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'No saved places yet!',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'Tap the heart icon on any beach, restaurant or mountain spot to save it here for offline access.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey, fontSize: 13),
-                  ),
-                  const SizedBox(height: 24),
-                  ElevatedButton(
-                    onPressed: () => context.go('/home'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primary,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    child: const Text('Explore Places'),
-                  ),
-                ],
-              ),
+          ? EmptyState(
+              title: 'No Saved Places Yet',
+              message:
+                  'Tap the heart icon on any beach, mountain, cafe or historical spot to save it here for instant offline access.',
+              icon: Icons.favorite_border_rounded,
+              actionLabel: 'Explore Destinations',
+              onAction: () => context.go('/explore'),
             )
           : ListView.builder(
               padding: const EdgeInsets.all(20),
@@ -93,6 +65,37 @@ class FavoritesScreen extends ConsumerWidget {
                         .read(favoritesProvider.notifier)
                         .toggleFavorite(place.id);
                   },
+                  actionButton: InkWell(
+                    onTap: () => showAddToTripSheet(context, ref, place),
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: AppColors.primary.withValues(alpha: 0.2),
+                        ),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.add_circle_outline,
+                              size: 14, color: AppColors.primary),
+                          SizedBox(width: 4),
+                          Text(
+                            'My Trip',
+                            style: TextStyle(
+                              color: AppColors.primary,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 );
               },
             ),

@@ -1,8 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import '../../data/models/place_model.dart';
 import '../constants/app_colors.dart';
-import 'rating_stars.dart';
+import 'app_image.dart';
 
 enum CardLayout { vertical, horizontal }
 
@@ -11,6 +11,7 @@ class PlaceCard extends StatelessWidget {
   final VoidCallback onTap;
   final VoidCallback onFavoriteTap;
   final CardLayout layout;
+  final Widget? actionButton;
 
   const PlaceCard({
     super.key,
@@ -18,7 +19,102 @@ class PlaceCard extends StatelessWidget {
     required this.onTap,
     required this.onFavoriteTap,
     this.layout = CardLayout.vertical,
+    this.actionButton,
   });
+
+  Widget _buildImagePlaceholder(BuildContext context, bool isDark) {
+    return Container(
+      color: isDark ? Colors.grey[850] : Colors.grey[200],
+      child: Center(
+        child: Icon(
+          Icons.image_outlined,
+          color: AppColors.primary.withValues(alpha: 0.4),
+          size: 32,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildImageError(BuildContext context, bool isDark) {
+    return Container(
+      color: AppColors.primary.withValues(alpha: 0.08),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.landscape_rounded,
+              color: AppColors.primary.withValues(alpha: 0.6),
+              size: 36,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              place.city,
+              style: TextStyle(
+                fontSize: 10,
+                color: AppColors.primary.withValues(alpha: 0.7),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDebugBadges() {
+    if (kReleaseMode) return const SizedBox.shrink();
+
+    final List<Widget> badges = [];
+
+    if (!place.verified) {
+      badges.add(
+        Container(
+          margin: const EdgeInsets.only(right: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+          decoration: BoxDecoration(
+            color: Colors.amber.shade800,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: const Text(
+            'UNVERIFIED',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 9,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
+    }
+
+    if (place.images.isEmpty || place.images.first.isEmpty) {
+      badges.add(
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+          decoration: BoxDecoration(
+            color: Colors.red.shade700,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: const Text(
+            'NO PHOTO',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 9,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
+    }
+
+    if (badges.isEmpty) return const SizedBox.shrink();
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: badges,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +140,7 @@ class PlaceCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image Header with Hero & Favorite Badge
+              // Image Header with Hero, Favorite Badge & Debug Badges
               Stack(
                 children: [
                   Hero(
@@ -52,22 +148,22 @@ class PlaceCard extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.vertical(
                           top: Radius.circular(22)),
-                      child: CachedNetworkImage(
-                        imageUrl: place.heroImage,
-                        height: 150,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) => Container(
-                          height: 150,
-                          color: isDark ? Colors.grey[800] : Colors.grey[200],
-                        ),
-                        errorWidget: (context, url, error) => Container(
-                          height: 150,
-                          color: AppColors.primary.withValues(alpha: 0.1),
-                          child: const Icon(Icons.beach_access,
-                              color: AppColors.primary, size: 40),
-                        ),
-                      ),
+                      child: place.heroImage.isNotEmpty
+                          ? AppImage(
+                              imagePath: place.heroImage,
+                              height: 140,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                              placeholder: (context) =>
+                                  _buildImagePlaceholder(context, isDark),
+                              errorBuilder: (context, error, stack) =>
+                                  _buildImageError(context, isDark),
+                            )
+                          : SizedBox(
+                              height: 140,
+                              width: double.infinity,
+                              child: _buildImageError(context, isDark),
+                            ),
                     ),
                   ),
                   // Favorite Heart Button
@@ -99,7 +195,7 @@ class PlaceCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.6),
+                        color: Colors.black.withValues(alpha: 0.65),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
@@ -107,10 +203,16 @@ class PlaceCard extends StatelessWidget {
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
+                  ),
+                  // Debug Badges (Top Left)
+                  Positioned(
+                    top: 10,
+                    left: 10,
+                    child: _buildDebugBadges(),
                   ),
                 ],
               ),
@@ -125,46 +227,57 @@ class PlaceCard extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: isDark
                             ? AppColors.textPrimaryDark
                             : AppColors.textPrimaryLight,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 4),
+                    Text(
+                      place.shortDescription,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: isDark
+                            ? AppColors.textSecondaryDark
+                            : AppColors.textSecondaryLight,
+                        height: 1.3,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
-                        RatingStars(rating: place.rating, iconSize: 14),
-                        const SizedBox(width: 6),
-                        Text(
-                          '${place.rating} (${place.reviewCount})',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 3),
+                          decoration: BoxDecoration(
+                            color: AppColors.primary.withValues(alpha: 0.12),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            place.category,
+                            style: const TextStyle(
+                              color: AppColors.primary,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                    Row(
-                      children: [
-                        const Icon(Icons.location_on_outlined,
-                            size: 14, color: AppColors.primary),
-                        const SizedBox(width: 4),
-                        Expanded(
-                          child: Text(
-                            place.distance,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                        const Spacer(),
+                        if (place.priceInfo.isNotEmpty)
+                          Text(
+                            place.priceInfo,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w500,
                               color: isDark
                                   ? AppColors.textSecondaryDark
                                   : AppColors.textSecondaryLight,
                             ),
                           ),
-                        ),
                       ],
                     ),
                   ],
@@ -180,7 +293,7 @@ class PlaceCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 16),
+        margin: const EdgeInsets.only(bottom: 14),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: isDark ? AppColors.cardDark : AppColors.cardLight,
@@ -194,23 +307,28 @@ class PlaceCard extends StatelessWidget {
           ],
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Hero(
               tag: 'place-img-${place.id}',
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: CachedNetworkImage(
-                  imageUrl: place.heroImage,
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                  errorWidget: (context, url, error) => Container(
-                    width: 100,
-                    height: 100,
-                    color: AppColors.primary.withValues(alpha: 0.1),
-                    child: const Icon(Icons.place, color: AppColors.primary),
-                  ),
-                ),
+                child: place.heroImage.isNotEmpty
+                    ? AppImage(
+                        imagePath: place.heroImage,
+                        width: 95,
+                        height: 95,
+                        fit: BoxFit.cover,
+                        placeholder: (context) =>
+                            _buildImagePlaceholder(context, isDark),
+                        errorBuilder: (context, error, stack) =>
+                            _buildImageError(context, isDark),
+                      )
+                    : SizedBox(
+                        width: 95,
+                        height: 95,
+                        child: _buildImageError(context, isDark),
+                      ),
               ),
             ),
             const SizedBox(width: 14),
@@ -221,20 +339,32 @@ class PlaceCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: AppColors.primary.withValues(alpha: 0.12),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          place.city,
-                          style: const TextStyle(
-                            color: AppColors.primary,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                          ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Flexible(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 3),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primary.withValues(alpha: 0.12),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Text(
+                                  '${place.city} • ${place.category}',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    color: AppColors.primary,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            _buildDebugBadges(),
+                          ],
                         ),
                       ),
                       IconButton(
@@ -253,6 +383,7 @@ class PlaceCard extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 2),
                   Text(
                     place.name,
                     maxLines: 1,
@@ -266,27 +397,27 @@ class PlaceCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      RatingStars(rating: place.rating, iconSize: 13),
-                      const SizedBox(width: 6),
-                      Text(
-                        '${place.rating}',
-                        style: const TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
                   Text(
-                    place.distance,
+                    place.shortDescription.isNotEmpty
+                        ? place.shortDescription
+                        : place.description,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 12,
                       color: isDark
                           ? AppColors.textSecondaryDark
                           : AppColors.textSecondaryLight,
+                      height: 1.3,
                     ),
                   ),
+                  if (actionButton != null) ...[
+                    const SizedBox(height: 6),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: actionButton,
+                    ),
+                  ],
                 ],
               ),
             ),

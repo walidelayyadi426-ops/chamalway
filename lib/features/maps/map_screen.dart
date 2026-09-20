@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:go_router/go_router.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/widgets/app_image.dart';
 import '../../data/repositories/destination_repository.dart';
 import '../../data/models/place_model.dart';
 
@@ -14,142 +17,266 @@ class MapScreen extends ConsumerStatefulWidget {
 }
 
 class _MapScreenState extends ConsumerState<MapScreen> {
+  late final MapController _mapController;
   PlaceModel? _selectedPlace;
   String _activeCategory = 'all';
+  bool _hasTileError = false;
+
+  // Default initial map center (Northern Morocco: Tangier / Chefchaouen region)
+  static const LatLng _initialCenter = LatLng(35.35, -5.35);
+  static const double _initialZoom = 9.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _mapController = MapController();
+  }
+
+  @override
+  void dispose() {
+    _mapController.dispose();
+    super.dispose();
+  }
+
+  bool _isValidCoord(double lat, double lng) {
+    if (lat == 0.0 && lng == 0.0) return false;
+    if (lat.isNaN || lng.isNaN || lat.isInfinite || lng.isInfinite) return false;
+    if (lat < -90.0 || lat > 90.0 || lng < -180.0 || lng > 180.0) return false;
+    return true;
+  }
+
+  IconData _getCategoryIcon(String category) {
+    switch (category.toLowerCase()) {
+      case 'beaches':
+        return Icons.beach_access_rounded;
+      case 'mountains':
+        return Icons.landscape_rounded;
+      case 'history':
+        return Icons.account_balance_rounded;
+      case 'restaurants':
+        return Icons.restaurant_rounded;
+      case 'cafes':
+        return Icons.local_cafe_rounded;
+      case 'hotels':
+        return Icons.hotel_rounded;
+      case 'shopping':
+        return Icons.shopping_bag_rounded;
+      default:
+        return Icons.place_rounded;
+    }
+  }
+
+  Widget _buildImagePlaceholder(BuildContext context, bool isDark) {
+    return Container(
+      color: isDark ? Colors.grey[850] : Colors.grey[200],
+      child: const Center(
+        child: Icon(
+          Icons.image_outlined,
+          color: AppColors.primary,
+          size: 24,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildImageError(BuildContext context, bool isDark) {
+    return Container(
+      color: AppColors.primary.withValues(alpha: 0.1),
+      child: const Center(
+        child: Icon(
+          Icons.landscape_rounded,
+          color: AppColors.primary,
+          size: 28,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final repo = ref.watch(destinationRepositoryProvider);
     final places = repo.getPlacesByCategory(_activeCategory);
+    final availableCategories = repo.getAvailableCategories();
+
+    final validPlaces = places.where((p) => _isValidCoord(p.latitude, p.longitude)).toList();
 
     return Scaffold(
       body: Stack(
         children: [
-          // Styled Map Visualizer Container
-          Container(
-            decoration: BoxDecoration(
-              color: isDark ? const Color(0xFF1E293B) : const Color(0xFFE2E8F0),
+          // FlutterMap GIS Interactive Layer
+          FlutterMap(
+            mapController: _mapController,
+            options: MapOptions(
+              initialCenter: _initialCenter,
+              initialZoom: _initialZoom,
+              minZoom: 7.0,
+              maxZoom: 18.0,
+              onTap: (_, __) {
+                setState(() => _selectedPlace = null);
+              },
             ),
-            child: Stack(
-              children: [
-                // Map Background Imagery Layer
-                Positioned.fill(
-                  child: Opacity(
-                    opacity: isDark ? 0.35 : 0.65,
-                    child: Image.network(
-                      'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-
-                // Interactive Custom Pins Placement
-                ...places.asMap().entries.map((entry) {
-                  final index = entry.key;
-                  final place = entry.value;
-                  // Dynamic spread coordinates on canvas mockup
-                  final top = 140.0 + (index * 70) % 400;
-                  final left = 40.0 + (index * 110) % 300;
-
+            children: [
+              TileLayer(
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                userAgentPackageName: 'com.chamalway.nordmarocguide',
+                tileProvider: NetworkTileProvider(),
+                errorTileCallback: (tile, error, stackTrace) {
+                  if (!_hasTileError) {
+                    setState(() => _hasTileError = true);
+                  }
+                },
+              ),
+              MarkerLayer(
+                markers: validPlaces.map((place) {
                   final isSelected = _selectedPlace?.id == place.id;
-
-                  return Positioned(
-                    top: top,
-                    left: left,
+                  return Marker(
+                    point: LatLng(place.latitude, place.longitude),
+                    width: isSelected ? 50 : 40,
+                    height: isSelected ? 50 : 40,
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
                           _selectedPlace = place;
                         });
+                        _mapController.move(
+                          LatLng(place.latitude, place.longitude),
+                          _mapController.camera.zoom < 11.0 ? 11.0 : _mapController.camera.zoom,
+                        );
                       },
                       child: AnimatedScale(
-                        duration: const Duration(milliseconds: 250),
-                        scale: isSelected ? 1.3 : 1.0,
+                        duration: const Duration(milliseconds: 200),
+                        scale: isSelected ? 1.25 : 1.0,
                         child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 6),
                           decoration: BoxDecoration(
-                            color: isSelected
-                                ? AppColors.secondary
-                                : AppColors.primary,
-                            borderRadius: BorderRadius.circular(16),
+                            color: isSelected ? AppColors.secondary : AppColors.primary,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 2.5),
                             boxShadow: const [
                               BoxShadow(
                                 color: Colors.black38,
-                                blurRadius: 8,
-                                offset: Offset(0, 4),
+                                blurRadius: 6,
+                                offset: Offset(0, 3),
                               ),
                             ],
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                isSelected
-                                    ? Icons.location_on
-                                    : Icons.place,
-                                color: Colors.white,
-                                size: 16,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                place.name.split(' ').first,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                          child: Icon(
+                            _getCategoryIcon(place.category),
+                            color: Colors.white,
+                            size: isSelected ? 24 : 20,
                           ),
                         ),
                       ),
                     ),
                   );
-                }),
-              ],
-            ),
+                }).toList(),
+              ),
+              RichAttributionWidget(
+                attributions: [
+                  TextSourceAttribution(
+                    '© OpenStreetMap contributors',
+                    onTap: () async {
+                      final url = Uri.parse('https://www.openstreetmap.org/copyright');
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(url);
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ],
           ),
 
           // Top Floating Filter Bar
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     _buildMapFilterChip('all', '🗺️ All Pins'),
-                    _buildMapFilterChip('beaches', '🏖️ Beaches'),
-                    _buildMapFilterChip('mountains', '🏔️ Mountains'),
-                    _buildMapFilterChip('history', '🏰 History'),
-                    _buildMapFilterChip('restaurants', '🍽️ Food'),
+                    ...availableCategories.map((cat) {
+                      return _buildMapFilterChip(cat.id, cat.title);
+                    }),
                   ],
                 ),
               ),
             ),
           ),
 
-          // Floating Current Location Trigger
+          // Non-blocking Banner if Map Tiles Fail to Load (No Internet)
+          if (_hasTileError)
+            SafeArea(
+              child: Container(
+                margin: const EdgeInsets.fromLTRB(16, 60, 16, 0),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF1E293B) : const Color(0xFFFEF3C7),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: isDark ? Colors.amber.withValues(alpha: 0.4) : Colors.amber[700]!,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.15),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.wifi_off_rounded,
+                      color: isDark ? Colors.amber[300] : Colors.amber[900],
+                      size: 20,
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        'Map background needs an internet connection',
+                        style: TextStyle(
+                          color: isDark ? Colors.amber[100] : Colors.amber[900],
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => setState(() => _hasTileError = false),
+                      child: Icon(
+                        Icons.close,
+                        size: 18,
+                        color: isDark ? Colors.amber[300] : Colors.amber[900],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+          // Floating Re-Center Button
           Positioned(
             right: 16,
             bottom: _selectedPlace != null ? 220 : 100,
             child: FloatingActionButton.small(
-              heroTag: 'my-location-fab',
+              heroTag: 'recenter-map-fab',
               backgroundColor: AppColors.primary,
               onPressed: () {
+                _mapController.move(_initialCenter, _initialZoom);
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Centered on current GPS location: Tangier'),
+                    content: Text('Centered map on Northern Morocco 🇲🇦'),
+                    duration: Duration(seconds: 2),
                   ),
                 );
               },
-              child: const Icon(Icons.my_location, color: Colors.white),
+              child: const Icon(Icons.center_focus_strong, color: Colors.white),
             ),
           ),
 
-          // Selected Place Popup Card at Bottom
+          // Selected Place Bottom Popup Card
           if (_selectedPlace != null)
             Positioned(
               left: 20,
@@ -172,12 +299,22 @@ class _MapScreenState extends ConsumerState<MapScreen> {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: CachedNetworkImage(
-                        imageUrl: _selectedPlace!.heroImage,
-                        width: 80,
-                        height: 80,
-                        fit: BoxFit.cover,
-                      ),
+                      child: _selectedPlace!.heroImage.isNotEmpty
+                          ? AppImage(
+                              imagePath: _selectedPlace!.heroImage,
+                              width: 80,
+                              height: 80,
+                              fit: BoxFit.cover,
+                              placeholder: (context) =>
+                                  _buildImagePlaceholder(context, isDark),
+                              errorBuilder: (context, error, stack) =>
+                                  _buildImageError(context, isDark),
+                            )
+                          : SizedBox(
+                              width: 80,
+                              height: 80,
+                              child: _buildImageError(context, isDark),
+                            ),
                     ),
                     const SizedBox(width: 14),
                     Expanded(
@@ -195,7 +332,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            '${_selectedPlace!.city} • ⭐ ${_selectedPlace!.rating}',
+                            '${_selectedPlace!.city} • ${_selectedPlace!.category}',
                             style: const TextStyle(
                               fontSize: 12,
                               color: Colors.grey,

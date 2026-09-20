@@ -8,6 +8,8 @@ import '../../features/mountains/mountains_screen.dart';
 import '../../features/historical/historical_screen.dart';
 import '../../features/restaurants/restaurants_screen.dart';
 import '../../features/hotels/hotels_screen.dart';
+import '../../features/settings/settings_screen.dart';
+import '../../features/settings/photo_credits_screen.dart';
 import '../../features/about/about_screen.dart';
 import '../../features/emergency/emergency_screen.dart';
 
@@ -32,8 +34,16 @@ class AppRouter {
         builder: (context, state) => const MainLayoutScreen(initialIndex: 1),
       ),
       GoRoute(
-        path: '/favorites',
+        path: '/map',
         builder: (context, state) => const MainLayoutScreen(initialIndex: 2),
+      ),
+      GoRoute(
+        path: '/trip',
+        builder: (context, state) => const MainLayoutScreen(initialIndex: 3),
+      ),
+      GoRoute(
+        path: '/favorites',
+        builder: (context, state) => const MainLayoutScreen(initialIndex: 4),
       ),
       GoRoute(
         path: '/place/:id',
@@ -64,7 +74,11 @@ class AppRouter {
       ),
       GoRoute(
         path: '/settings',
-        builder: (context, state) => const MainLayoutScreen(initialIndex: 3),
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: '/credits',
+        builder: (context, state) => const PhotoCreditsScreen(),
       ),
       GoRoute(
         path: '/about',

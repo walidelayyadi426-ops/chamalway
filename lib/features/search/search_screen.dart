@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/widgets/place_card.dart';
+import '../../core/widgets/empty_state.dart';
 import '../../data/repositories/destination_repository.dart';
 import '../../data/models/place_model.dart';
 
@@ -15,54 +17,46 @@ class SearchScreen extends ConsumerStatefulWidget {
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
+  Timer? _debounceTimer;
   String _searchQuery = '';
-  Set<String> _selectedFilters = {};
+  String _selectedCity = 'all';
+  String _selectedCategory = 'all';
+
   final List<String> _recentSearches = [
-    'Akchour Waterfalls',
     'Chefchaouen',
-    'Tangier Seafood',
-    'Dalia Beach',
+    'Akchour',
+    'Tangier',
+    'Martil',
+    'Al Hoceima',
   ];
 
-  final Map<String, String> _filterOptions = const {
-    'near_me': '📍 Near Me (Within 10 km)',
-    'top_rated': '⭐ Top Rated (4.8+)',
-    'open_now': '🕒 Open Now',
-    'budget': '💰 Budget Friendly',
-    'luxury': '💎 Luxury',
-  };
+  @override
+  void dispose() {
+    _debounceTimer?.cancel();
+    _searchController.dispose();
+    super.dispose();
+  }
 
-  List<PlaceModel> _applyFilters(List<PlaceModel> places) {
+  void _onSearchChanged(String query) {
+    if (_debounceTimer?.isActive ?? false) _debounceTimer!.cancel();
+    _debounceTimer = Timer(const Duration(milliseconds: 300), () {
+      if (mounted) {
+        setState(() {
+          _searchQuery = query;
+        });
+      }
+    });
+  }
+
+  List<PlaceModel> _filterPlaces(List<PlaceModel> places) {
     return places.where((place) {
-      if (_selectedFilters.contains('near_me')) {
-        if (place.distance.contains('km')) {
-          final valStr = RegExp(r'[\d.]+').stringMatch(place.distance);
-          if (valStr != null) {
-            final val = double.tryParse(valStr);
-            if (val != null && val > 10.0) return false;
-          }
-        }
+      if (_selectedCity != 'all' &&
+          place.city.toLowerCase() != _selectedCity.toLowerCase()) {
+        return false;
       }
-      if (_selectedFilters.contains('top_rated')) {
-        if (place.rating < 4.8) return false;
-      }
-      if (_selectedFilters.contains('open_now')) {
-        final hours = place.openHours.toLowerCase();
-        if (!hours.contains('24 hours') && !hours.contains('09:00') && !hours.contains('07:00')) {
-          return false;
-        }
-      }
-      if (_selectedFilters.contains('budget')) {
-        final price = place.priceRange.toLowerCase();
-        if (!price.contains('free') && !price.contains('budget') && !price.contains('10 mad')) {
-          return false;
-        }
-      }
-      if (_selectedFilters.contains('luxury')) {
-        final price = place.priceRange.toLowerCase();
-        if (!price.contains('luxury') && !price.contains('\$\$')) {
-          return false;
-        }
+      if (_selectedCategory != 'all' &&
+          place.category.toLowerCase() != _selectedCategory.toLowerCase()) {
+        return false;
       }
       return true;
     }).toList();
@@ -72,14 +66,20 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final repo = ref.watch(destinationRepositoryProvider);
+
     final rawResults = repo.searchPlaces(_searchQuery);
-    final results = _applyFilters(rawResults);
+    final results = _filterPlaces(rawResults);
+    final availableCities = repo.getAvailableCities();
+    final availableCategories = repo.getAvailableCategories();
+
+    final bool hasActiveFilters =
+        _selectedCity != 'all' || _selectedCategory != 'all';
 
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            // Search Header Bar with Filter & Voice trigger
+            // Search Header Bar
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
@@ -93,19 +93,19 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       ),
                       child: TextField(
                         controller: _searchController,
-                        onChanged: (val) {
-                          setState(() => _searchQuery = val);
-                        },
+                        onChanged: _onSearchChanged,
                         decoration: InputDecoration(
-                          hintText: 'Search places, beaches, foods...',
+                          hintText: 'Search places, cities, tags...',
                           icon: const Icon(Icons.search, color: AppColors.primary),
                           border: InputBorder.none,
-                          suffixIcon: _searchQuery.isNotEmpty
+                          suffixIcon: _searchController.text.isNotEmpty
                               ? IconButton(
                                   icon: const Icon(Icons.clear, size: 20),
                                   onPressed: () {
                                     _searchController.clear();
-                                    setState(() => _searchQuery = '');
+                                    setState(() {
+                                      _searchQuery = '';
+                                    });
                                   },
                                 )
                               : null,
@@ -113,122 +113,138 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
-                  // Filter Modal Trigger Button with Badge if active
-                  GestureDetector(
-                    onTap: () => _showFilterBottomSheet(context),
-                    child: Container(
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        color: _selectedFilters.isNotEmpty
-                            ? AppColors.secondary
-                            : AppColors.primary,
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          const Icon(Icons.tune, color: Colors.white),
-                          if (_selectedFilters.isNotEmpty)
-                            Positioned(
-                              top: -4,
-                              right: -4,
-                              child: Container(
-                                padding: const EdgeInsets.all(4),
-                                decoration: const BoxDecoration(
-                                  color: Colors.red,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Text(
-                                  '${_selectedFilters.length}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
+                  if (hasActiveFilters) ...[
+                    const SizedBox(width: 8),
+                    IconButton(
+                      icon: const Icon(Icons.filter_alt_off, color: Colors.red),
+                      tooltip: 'Reset Filters',
+                      onPressed: () {
+                        setState(() {
+                          _selectedCity = 'all';
+                          _selectedCategory = 'all';
+                        });
+                      },
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),
 
-            // Active Filters Row
-            if (_selectedFilters.isNotEmpty) ...[
-              Padding(
+            // Horizontal Category Chips
+            if (availableCategories.isNotEmpty)
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    const Text('Active Filters:',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey)),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            ..._selectedFilters.map((filterKey) {
-                              return Padding(
-                                padding: const EdgeInsets.only(right: 6),
-                                child: Chip(
-                                  label: Text(_filterOptions[filterKey] ?? filterKey,
-                                      style: const TextStyle(fontSize: 11, color: Colors.white)),
-                                  backgroundColor: AppColors.primary,
-                                  deleteIcon: const Icon(Icons.close, size: 14, color: Colors.white),
-                                  onDeleted: () {
-                                    setState(() {
-                                      _selectedFilters.remove(filterKey);
-                                    });
-                                  },
-                                ),
-                              );
-                            }),
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  _selectedFilters.clear();
-                                });
-                              },
-                              child: const Text('Clear All',
-                                  style: TextStyle(fontSize: 12, color: Colors.red)),
-                            ),
-                          ],
-                        ),
+                    ChoiceChip(
+                      selected: _selectedCategory == 'all',
+                      label: const Text('🌟 All Categories'),
+                      selectedColor: AppColors.primary,
+                      labelStyle: TextStyle(
+                        color: _selectedCategory == 'all'
+                            ? Colors.white
+                            : AppColors.primary,
+                        fontWeight: FontWeight.bold,
                       ),
+                      onSelected: (_) {
+                        setState(() => _selectedCategory = 'all');
+                      },
                     ),
+                    const SizedBox(width: 8),
+                    ...availableCategories.map((cat) {
+                      final isSelected = _selectedCategory == cat.id;
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: ChoiceChip(
+                          selected: isSelected,
+                          label: Text(cat.title),
+                          selectedColor: AppColors.primary,
+                          labelStyle: TextStyle(
+                            color: isSelected ? Colors.white : AppColors.primary,
+                            fontWeight: isSelected
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                          ),
+                          onSelected: (_) {
+                            setState(() => _selectedCategory = cat.id);
+                          },
+                        ),
+                      );
+                    }),
                   ],
                 ),
               ),
+
+            // Horizontal City Selector Chips
+            if (availableCities.isNotEmpty) ...[
               const SizedBox(height: 8),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
+                    const Icon(Icons.location_city,
+                        size: 16, color: Colors.grey),
+                    const SizedBox(width: 6),
+                    ChoiceChip(
+                      selected: _selectedCity == 'all',
+                      label: const Text('All Cities'),
+                      selectedColor: AppColors.secondary,
+                      labelStyle: TextStyle(
+                        color: _selectedCity == 'all'
+                            ? Colors.white
+                            : (isDark ? Colors.white70 : Colors.black87),
+                        fontSize: 12,
+                      ),
+                      onSelected: (_) {
+                        setState(() => _selectedCity = 'all');
+                      },
+                    ),
+                    const SizedBox(width: 6),
+                    ...availableCities.map((city) {
+                      final isSelected =
+                          _selectedCity.toLowerCase() == city.toLowerCase();
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 6),
+                        child: ChoiceChip(
+                          selected: isSelected,
+                          label: Text(city),
+                          selectedColor: AppColors.secondary,
+                          labelStyle: TextStyle(
+                            color: isSelected
+                                ? Colors.white
+                                : (isDark ? Colors.white70 : Colors.black87),
+                            fontSize: 12,
+                          ),
+                          onSelected: (_) {
+                            setState(() => _selectedCity = city);
+                          },
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+              ),
             ],
 
+            const SizedBox(height: 10),
+
             // Recent Searches Chips
-            if (_searchQuery.isEmpty && _selectedFilters.isEmpty) ...[
+            if (_searchQuery.isEmpty && !hasActiveFilters) ...[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Recent Searches',
+                      'Popular Searches',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
+                        color: Colors.grey,
                       ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        setState(() => _recentSearches.clear());
-                      },
-                      child: const Text('Clear All',
-                          style: TextStyle(color: Colors.grey)),
                     ),
                   ],
                 ),
@@ -242,7 +258,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       padding: const EdgeInsets.only(right: 8),
                       child: ActionChip(
                         label: Text(term),
-                        avatar: const Icon(Icons.history, size: 16),
+                        avatar: const Icon(Icons.history, size: 14),
                         onPressed: () {
                           _searchController.text = term;
                           setState(() => _searchQuery = term);
@@ -252,37 +268,29 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   }).toList(),
                 ),
               ),
-              const Divider(height: 32),
+              const Divider(height: 24),
             ],
 
-            // Search Results List
+            // Results List or Empty State
             Expanded(
               child: results.isEmpty
-                  ? Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.search_off,
-                              size: 64, color: Colors.grey[400]),
-                          const SizedBox(height: 12),
-                          Text(
-                            _selectedFilters.isNotEmpty
-                                ? 'No places found matching selected filters'
-                                : 'No places found for "$_searchQuery"',
-                            style: const TextStyle(
-                                fontSize: 16, color: Colors.grey),
-                          ),
-                          if (_selectedFilters.isNotEmpty)
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  _selectedFilters.clear();
-                                });
-                              },
-                              child: const Text('Reset Filters'),
-                            ),
-                        ],
-                      ),
+                  ? EmptyState(
+                      title: 'No Destinations Found',
+                      message: _searchQuery.isNotEmpty
+                          ? 'No destinations match "$_searchQuery". Try searching for another city, tag, or landmark.'
+                          : 'No destinations match your selected filters.',
+                      icon: Icons.search_off_rounded,
+                      actionLabel: hasActiveFilters ? 'Clear Filters' : null,
+                      onAction: hasActiveFilters
+                          ? () {
+                              setState(() {
+                                _selectedCity = 'all';
+                                _selectedCategory = 'all';
+                                _searchController.clear();
+                                _searchQuery = '';
+                              });
+                            }
+                          : null,
                     )
                   : ListView.builder(
                       padding: const EdgeInsets.all(20),
@@ -305,117 +313,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  void _showFilterBottomSheet(BuildContext context) {
-    final tempFilters = Set<String>.from(_selectedFilters);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: isDark ? AppColors.cardDark : Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setSheetState) {
-            return Padding(
-              padding: const EdgeInsets.all(24),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Filter Destinations',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        if (tempFilters.isNotEmpty)
-                          TextButton(
-                            onPressed: () {
-                              setSheetState(() {
-                                tempFilters.clear();
-                              });
-                            },
-                            child: const Text('Reset',
-                                style: TextStyle(color: Colors.red)),
-                          ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: _filterOptions.entries.map((entry) {
-                        final key = entry.key;
-                        final label = entry.value;
-                        final isSelected = tempFilters.contains(key);
-
-                        return FilterChip(
-                          selected: isSelected,
-                          label: Text(label),
-                          labelStyle: TextStyle(
-                            color: isSelected
-                                ? Colors.white
-                                : (isDark ? Colors.white70 : Colors.black87),
-                            fontWeight: isSelected
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                          ),
-                          selectedColor: AppColors.primary,
-                          checkmarkColor: Colors.white,
-                          backgroundColor:
-                              isDark ? Colors.grey[800] : Colors.grey[200],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          onSelected: (selected) {
-                            setSheetState(() {
-                              if (selected) {
-                                tempFilters.add(key);
-                              } else {
-                                tempFilters.remove(key);
-                              }
-                            });
-                          },
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(height: 24),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            _selectedFilters = Set.from(tempFilters);
-                          });
-                          Navigator.pop(context);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                        child: const Text('Apply Filters',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 16)),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
-      },
     );
   }
 }

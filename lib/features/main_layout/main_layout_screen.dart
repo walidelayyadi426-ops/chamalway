@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import '../../core/widgets/custom_bottom_nav.dart';
 import '../home/home_screen.dart';
 import '../search/search_screen.dart';
+import '../maps/map_screen.dart';
+import '../trip/trip_screen.dart';
 import '../favorites/favorites_screen.dart';
-import '../settings/settings_screen.dart';
 
 class MainLayoutScreen extends StatefulWidget {
   final int initialIndex;
@@ -20,14 +21,25 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
   final List<Widget> _screens = const [
     HomeScreen(),
     SearchScreen(),
+    MapScreen(),
+    TripScreen(),
     FavoritesScreen(),
-    SettingsScreen(),
   ];
 
   @override
   void initState() {
     super.initState();
     _currentIndex = widget.initialIndex;
+  }
+
+  @override
+  void didUpdateWidget(covariant MainLayoutScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.initialIndex != widget.initialIndex) {
+      setState(() {
+        _currentIndex = widget.initialIndex;
+      });
+    }
   }
 
   @override

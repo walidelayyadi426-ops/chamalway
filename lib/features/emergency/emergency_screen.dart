@@ -12,7 +12,7 @@ class EmergencyScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('🚨 Urgences & Conseils Voyage'),
+        title: const Text('🚨 Emergency & Travel Tips'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
@@ -33,12 +33,12 @@ class EmergencyScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Numéros d\'urgence',
+                        'Emergency Numbers',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 4),
                       Text(
-                        'Appuyez sur un numéro pour passer un appel directement.',
+                        'Tap a number to place a call directly.',
                         style: TextStyle(fontSize: 12, color: Colors.grey),
                       ),
                     ],
@@ -67,7 +67,7 @@ class EmergencyScreen extends StatelessWidget {
                   leading: const Icon(Icons.phone_in_talk,
                       color: AppColors.favorite),
                   title: Text(entry.key),
-                  subtitle: const Text('Toucher pour appeler'),
+                  subtitle: const Text('Tap to call'),
                   trailing: Text(
                     entry.value,
                     style: const TextStyle(
@@ -84,7 +84,7 @@ class EmergencyScreen extends StatelessWidget {
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Impossible de composer le ${entry.value}'),
+                            content: Text('Unable to call ${entry.value}'),
                           ),
                         );
                       }

@@ -1,0 +1,1414 @@
+[
+  {
+    "id": "chefchaouen_medina",
+    "name": "Chefchaouen Blue Medina",
+    "city": "Chefchaouen",
+    "category": "History",
+    "shortDescription": "Striking blue-washed alleyways nestled in the Rif Mountains.",
+    "description": "Chefchaouen is famous for its striking blue-washed buildings nestled in the Rif Mountains. Stroll through narrow cobblestone alleys adorned with colorful pottery, handwoven blankets, and blooming plant pots.",
+    "whyVisit": "Unmatched blue architecture, serene mountain air, and authentic Moroccan craft shops.",
+    "bestTimeToVisit": "Spring (March to May) & Autumn (September to November)",
+    "estimatedDuration": "3 - 5 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.1713,
+    "longitude": -5.2697,
+    "images": [
+      "assets/images/places/chefchaouen_medina_1.jpg",
+      "assets/images/places/chefchaouen_medina_2.jpg",
+      "assets/images/places/chefchaouen_medina_3.jpg"
+    ],
+    "imageCredits": [
+      "Sambasoccer27 - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Boys_playing_soccer_on_the_street_in_Chefchaouen_Morocco.jpg",
+      "Buiobuione - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Cat_on_the_street_in_the_city_of_Chefchaouen_88888.jpg",
+      "Buiobuione - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Cats_on_the_street_in_the_city_of_Chefchaouen_324232.jpg"
+    ],
+    "tags": [
+      "Blue City",
+      "Photography",
+      "Handicrafts",
+      "UNESCO"
+    ],
+    "isFavorite": true,
+    "isFeatured": true,
+    "isTrending": true,
+    "verified": true
+  },
+  {
+    "id": "akchour_waterfalls",
+    "name": "Akchour Waterfalls & God’s Bridge",
+    "city": "Akchour",
+    "category": "Mountains",
+    "shortDescription": "Natural canyon with emerald pools, waterfalls, and God’s Bridge arch.",
+    "description": "A spectacular natural canyon with emerald natural pools, lush green foliage, towering cliff walls, and the iconic limestone rock arch known as God’s Bridge.",
+    "whyVisit": "Breathtaking river trekking, pristine freshwater pools, and mountain canyon scenery.",
+    "bestTimeToVisit": "April to October",
+    "estimatedDuration": "Full Day (5 - 7 Hours)",
+    "priceInfo": "Free Nature Reserve",
+    "latitude": 35.2241,
+    "longitude": -5.1764,
+    "images": [
+      "assets/images/places/akchour_waterfalls_1.jpg",
+      "assets/images/places/akchour_waterfalls_2.jpg",
+      "assets/images/places/akchour_waterfalls_3.jpg"
+    ],
+    "imageCredits": [
+      "Yobennane - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Akchor_chefchaouen.jpg",
+      "Nadamari390 - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Akchour,_Chefchaouen,_Morocco.jpg",
+      "GuHKS - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Akchour,_Chefchaouen.jpg"
+    ],
+    "tags": [
+      "Hiking",
+      "Waterfalls",
+      "Natural Arch",
+      "Swimming"
+    ],
+    "isFavorite": false,
+    "isFeatured": true,
+    "isTrending": true,
+    "verified": true
+  },
+  {
+    "id": "caves_of_hercules",
+    "name": "Caves of Hercules (Les Grottes d’Hercule)",
+    "city": "Tangier",
+    "category": "History",
+    "shortDescription": "Historic cave opening looking out onto the Atlantic Ocean.",
+    "description": "An archaeological cave complex situated right on the Atlantic coast. The sea opening resembles an inverted map of Africa, making it one of Tangier’s most iconic landmarks.",
+    "whyVisit": "Mythological origin, ocean view cave opening shaped like Africa, and coastal breeze.",
+    "bestTimeToVisit": "Year-round (Best at sunset)",
+    "estimatedDuration": "1 - 2 Hours",
+    "priceInfo": "10 MAD Entry",
+    "latitude": 35.7597,
+    "longitude": -5.9392,
+    "images": [
+      "assets/images/places/caves_of_hercules_1.jpg",
+      "assets/images/places/caves_of_hercules_2.jpg",
+      "assets/images/places/caves_of_hercules_3.jpg"
+    ],
+    "imageCredits": [
+      "Pierre Nordström - CC BY-SA 2.0 - https://commons.wikimedia.org/wiki/File:Entrance_to_the_Caves_of_Hercules,_Morocco.jpg",
+      "Amal BENTOUMI - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Grotte_d_Hercule_-_Achakar_-_Tangier.jpg",
+      "Amal BENTOUMI - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Grotte_d_Hercule_2_-_Achakar_-_Tangier.jpg"
+    ],
+    "tags": [
+      "Mythology",
+      "Sea View",
+      "Archaeology",
+      "Tangier Icon"
+    ],
+    "isFavorite": false,
+    "isFeatured": true,
+    "isTrending": true,
+    "verified": true
+  },
+  {
+    "id": "dalia_beach",
+    "name": "Plage Dalia",
+    "city": "Tangier / Belyounech",
+    "category": "Beaches",
+    "shortDescription": "Crystal-clear turquoise waters and soft golden sand.",
+    "description": "Crystal-clear turquoise waters and soft golden sand overlooking the Gibraltar Strait. Dalia Beach is renowned for its tranquil atmosphere and fresh local grilled fish stalls.",
+    "whyVisit": "Cleanest Mediterranean waters in Northern Morocco, ideal swimming conditions, fresh seafood.",
+    "bestTimeToVisit": "June to September",
+    "estimatedDuration": "3 - 6 Hours",
+    "priceInfo": "Free Public Beach",
+    "latitude": 35.8942,
+    "longitude": -5.4611,
+    "images": [
+      "assets/images/places/dalia_beach_1.jpg",
+      "assets/images/places/dalia_beach_2.jpg",
+      "assets/images/places/dalia_beach_3.jpg"
+    ],
+    "imageCredits": [
+      "LudwigSebastianMicheler - Public domain - https://commons.wikimedia.org/wiki/File:ISS048-E-5874_-_View_of_Morocco_-_Atlantic_Ocean_-_Port_Tanger_Med_-_Barrage_Oued_Rmel_Reservoir_-_Punta_Lanchones_-_Jbel_Yuima_-_Jbel_Musa_-_Belyounech_-_Fnideq_(Morocco)_-_road_RN16_-_Labyout_(cropped).jpg",
+      "Abdelkarim chaara - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Dalia_beach.jpg",
+      "Abdelkarim chaara - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Dalia_beach_huge_waves.jpg"
+    ],
+    "tags": [
+      "Crystal Waters",
+      "Blue Flag",
+      "Seafood",
+      "Relaxation"
+    ],
+    "isFavorite": true,
+    "isFeatured": true,
+    "isTrending": false,
+    "verified": true
+  },
+  {
+    "id": "martil_beach_promenade",
+    "name": "Martil Beach & Corniche",
+    "city": "Martil",
+    "category": "Beaches",
+    "shortDescription": "Lively coastal corniche with wide sandy beach and cafes.",
+    "description": "A vibrant coastal town boasting a wide palm-lined promenade, golden sandy beaches, lively summer festivals, and sea-view ice cream parlors.",
+    "whyVisit": "Family-friendly atmosphere, evening strolls along the corniche, and seaside dining.",
+    "bestTimeToVisit": "May to October",
+    "estimatedDuration": "2 - 4 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.6174,
+    "longitude": -5.2678,
+    "images": [
+      "assets/images/places/martil_beach_promenade_1.jpg",
+      "assets/images/places/martil_beach_promenade_2.jpg",
+      "assets/images/places/martil_beach_promenade_3.jpg"
+    ],
+    "imageCredits": [
+      "Mohamed Haddi - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:A_seagull_flying_in_Martil_beach.jpg",
+      "Mouna Hafid - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Beach_Martil_1.jpg",
+      "Mouna Hafid - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Beach_Martil_2.jpg"
+    ],
+    "tags": [
+      "Corniche",
+      "Family Friendly",
+      "Seaside Walk",
+      "Water Sports"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": true,
+    "verified": true
+  },
+  {
+    "id": "le_miramar_restaurant",
+    "name": "Le Miramar Seafood Restaurant",
+    "city": "Tangier",
+    "category": "Restaurants",
+    "shortDescription": "Oceanfront dining with wild Mediterranean catches and pastilla.",
+    "description": "Premier oceanfront dining serving daily catches of wild Mediterranean sea bass, king prawns, seafood pastilla, and traditional saffron rice.",
+    "whyVisit": "Fresh seafood platters, panoramic Bay of Tangier view, and classic Moroccan hospitality.",
+    "bestTimeToVisit": "Lunch & Dinner",
+    "estimatedDuration": "1.5 - 2.5 Hours",
+    "priceInfo": "$$ - Moderate / Luxury",
+    "latitude": 35.7865,
+    "longitude": -5.808,
+    "images": [
+      "assets/images/places/le_miramar_restaurant_1.jpg",
+      "assets/images/places/le_miramar_restaurant_2.jpg",
+      "assets/images/places/le_miramar_restaurant_3.jpg"
+    ],
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ],
+    "tags": [
+      "Seafood",
+      "Sea View",
+      "Fine Dining",
+      "Pastilla"
+    ],
+    "isFavorite": true,
+    "isFeatured": true,
+    "isTrending": true,
+    "verified": true
+  },
+  {
+    "id": "quemado_beach_alhoceima",
+    "name": "Plage Quemado (Al Hoceima)",
+    "city": "Al Hoceima",
+    "category": "Beaches",
+    "shortDescription": "Azure bay framed by dramatic limestone cliffs.",
+    "description": "Framed by majestic limestone cliffs, Quemado Beach offers azure waters, jet-ski rentals, scuba diving expeditions, and luxury resort amenities.",
+    "whyVisit": "Stunning Mediterranean cliff views, water sports, and pristine coastal waters.",
+    "bestTimeToVisit": "June to October",
+    "estimatedDuration": "Half Day",
+    "priceInfo": "Free Public Beach",
+    "latitude": 35.2472,
+    "longitude": -3.9317,
+    "images": [
+      "assets/images/places/quemado_beach_alhoceima_1.jpg",
+      "assets/images/places/quemado_beach_alhoceima_2.jpg",
+      "assets/images/places/quemado_beach_alhoceima_3.jpg"
+    ],
+    "imageCredits": [
+      "AmineTaza - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Al_Hoceima%27s_beach_Morocco.jpg",
+      "AmineTaza - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Al_Hoceima,_Maroc.jpg",
+      "Smartyzs - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Al_Hoceima_Beach.jpg"
+    ],
+    "tags": [
+      "Cliffside",
+      "Jet Ski",
+      "Mediterranean",
+      "Resort"
+    ],
+    "isFavorite": true,
+    "isFeatured": true,
+    "isTrending": true,
+    "verified": true
+  },
+  {
+    "id": "achakar_beach",
+    "name": "Plage Achakar",
+    "city": "Tangier",
+    "category": "Beaches",
+    "shortDescription": "Scenic Atlantic beach where ocean waves meet Cape Spartel cliffs.",
+    "description": "Plage Achakar offers wide golden sands, Atlantic ocean breeze, and camel rides near Cape Spartel lighthouse. Ideal for watching sunsets over the ocean.",
+    "whyVisit": "Sunset views, clean sand, camel rides, close proximity to Caves of Hercules.",
+    "bestTimeToVisit": "May to October",
+    "estimatedDuration": "2 - 4 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.761,
+    "longitude": -5.935,
+    "images": [
+      "assets/images/places/achakar_beach_1.jpg",
+      "assets/images/places/achakar_beach_2.jpg",
+      "assets/images/places/achakar_beach_3.jpg"
+    ],
+    "tags": [
+      "Atlantic",
+      "Sunset",
+      "Camel Rides",
+      "Cape Spartel"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Simohnt - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Achakar_Sunset.jpg",
+      "Nabilchatt - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Achakar_beach.jpg",
+      "Belrhadiyassin - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Achakar_beach_tangier_city_Morroco.JPG"
+    ]
+  },
+  {
+    "id": "cabo_negro_beach",
+    "name": "Cabo Negro Beach",
+    "city": "Tetouan / Cabo Negro",
+    "category": "Beaches",
+    "shortDescription": "Upscale Mediterranean beach with pine woods and calm waters.",
+    "description": "Flanked by lush pine-covered hills and luxury residences, Cabo Negro is a serene Mediterranean beach with soft sands and gentle waves.",
+    "whyVisit": "Relaxed resort feel, pine forest backdrop, horseback riding on the beach.",
+    "bestTimeToVisit": "June to September",
+    "estimatedDuration": "3 - 5 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.679,
+    "longitude": -5.275,
+    "images": [
+      "assets/images/places/cabo_negro_beach_1.jpg",
+      "assets/images/places/cabo_negro_beach_2.jpg"
+    ],
+    "tags": [
+      "Resort",
+      "Pine Forest",
+      "Horse Riding",
+      "Calm Sea"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Alaa marrakchi - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Cabo-negro_beach.JPG",
+      "Mustapha Bassouh - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Cabo_Negro_beach.jpg"
+    ]
+  },
+  {
+    "id": "paradis_plage_belyounech",
+    "name": "Belyounech Beach & Cove",
+    "city": "Belyounech",
+    "category": "Beaches",
+    "shortDescription": "Pristine cove at the base of Jbel Musa mountain.",
+    "description": "A secluded fishing village cove with crystal-clear waters directly underneath the cliff faces of Jbel Musa. Popular for scuba diving and boat excursions.",
+    "whyVisit": "Underwater snorkeling visibility, mountain-meets-sea landscape, quiet cove.",
+    "bestTimeToVisit": "June to October",
+    "estimatedDuration": "3 - 6 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.908,
+    "longitude": -5.39,
+    "images": [
+      "assets/images/places/paradis_plage_belyounech_1.jpg",
+      "assets/images/places/paradis_plage_belyounech_2.jpg"
+    ],
+    "tags": [
+      "Cove",
+      "Snorkeling",
+      "Scuba",
+      "Mountain View"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Xemenendura - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Belyounech_desde_Benz%C3%BA.jpg",
+      "Xemenendura - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Belyounech_playa.jpg"
+    ]
+  },
+  {
+    "id": "bouhachem_natural_park",
+    "name": "Jbel Bouhachem Natural Reserve",
+    "city": "Chefchaouen / Tetouan",
+    "category": "Mountains",
+    "shortDescription": "Lush cedar and oak forest reserve in the heart of the Rif.",
+    "description": "Jbel Bouhachem Natural Reserve protects ancient oak and cedar forests inhabited by Barbary macaques and diverse bird species. Great for eco-tourism and mountain village walks.",
+    "whyVisit": "Ancient cedar forest, Barbary macaque sightings, quiet trekking paths.",
+    "bestTimeToVisit": "March to June & September to November",
+    "estimatedDuration": "Full Day",
+    "priceInfo": "Free Nature Reserve",
+    "latitude": 35.25,
+    "longitude": -5.45,
+    "images": [
+      "assets/images/places/bouhachem_natural_park_1.jpg",
+      "assets/images/places/bouhachem_natural_park_2.jpg",
+      "assets/images/places/bouhachem_natural_park_3.jpg"
+    ],
+    "tags": [
+      "Cedar Forest",
+      "Eco Tourism",
+      "Wildlife",
+      "Trekking"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Nada qrichi - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:BOUHACHEM_MOROCCO.jpg",
+      "Kahisham - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Bouhachem_North_of_MOROCCO.jpg",
+      "Mustapha Bassouh - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Colorful_landscape_in_bouhachem_park.jpg"
+    ]
+  },
+  {
+    "id": "talassemtane_national_park",
+    "name": "Talassemtane National Park",
+    "city": "Chefchaouen",
+    "category": "Mountains",
+    "shortDescription": "UNESCO biosphere reserve with rare fir trees and deep gorges.",
+    "description": "Extending across the Rif Mountains near Chefchaouen, Talassemtane features limestone cliffs, deep canyons, and rare Moroccan fir forests found nowhere else on earth.",
+    "whyVisit": "Endemic flora, dramatic gorge panoramas, wilderness hiking trails.",
+    "bestTimeToVisit": "Spring & Autumn",
+    "estimatedDuration": "Full Day",
+    "priceInfo": "Free Nature Reserve",
+    "latitude": 35.15,
+    "longitude": -5.13,
+    "images": [
+      "assets/images/places/talassemtane_national_park_1.jpg",
+      "assets/images/places/talassemtane_national_park_2.jpg",
+      "assets/images/places/talassemtane_national_park_3.jpg"
+    ],
+    "tags": [
+      "UNESCO Biosphere",
+      "Trekking",
+      "Fir Trees",
+      "Gorges"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Original: Tahamaaroufi; this edit: MPF - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Abies_pinsapo_subsp._marocana,_Talassemtane,_Morocco_1.jpg",
+      "Original: Tahamaaroufi; this edit: MPF - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Abies_pinsapo_subsp._marocana,_Talassemtane,_Morocco_2.jpg",
+      "Jodal rachid - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Akchour_Camp_-_National_park_of_Talassemtane.jpg"
+    ]
+  },
+  {
+    "id": "jbel_kalti",
+    "name": "Jbel Kalti Peak",
+    "city": "Chefchaouen",
+    "category": "Mountains",
+    "shortDescription": "High mountain peak offering 360-degree Rif views.",
+    "description": "Jbel Kalti reaches an elevation of nearly 1,900 meters, offering serious hikers a rewarding summit climb through cedar forests to views overlooking Tetouan and Chefchaouen.",
+    "whyVisit": "Panoramic summit views, challenging summit hike, untouched wilderness.",
+    "bestTimeToVisit": "May to October",
+    "estimatedDuration": "6 - 8 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.33,
+    "longitude": -5.28,
+    "images": [
+      "assets/images/places/jbel_kalti_1.jpg",
+      "assets/images/places/jbel_kalti_2.jpg",
+      "assets/images/places/jbel_kalti_3.jpg"
+    ],
+    "tags": [
+      "Summit Climb",
+      "Panoramic",
+      "High Altitude",
+      "Wilderness"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Bikerhiker75 - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Chefchaouen,_Rif_Mountains,_Morocco,_Blue_City.jpg",
+      "Bikerhiker75 - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Chefchaouen,_Rif_Mountains,_Morocco,_Mosque_Sebbanin.jpg",
+      "Bikerhiker75 - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Chefchaouen,_Rif_Mountains,_Morocco.jpg"
+    ]
+  },
+  {
+    "id": "spanish_mosque_lookout",
+    "name": "Spanish Mosque Rif Viewpoint",
+    "city": "Chefchaouen",
+    "category": "Mountains",
+    "shortDescription": "Iconic hill outlook across the blue valley of Chefchaouen.",
+    "description": "Perched on a hill east of Chefchaouen, the Spanish Mosque offers the most famous sunset viewpoint over the blue city and the surrounding Rif mountain peaks.",
+    "whyVisit": "Unbeatable sunset photograph spot, easy 20-minute walk from medina.",
+    "bestTimeToVisit": "1 Hour Before Sunset",
+    "estimatedDuration": "1 - 2 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.168,
+    "longitude": -5.258,
+    "images": [
+      "assets/images/places/spanish_mosque_lookout_1.jpg",
+      "assets/images/places/spanish_mosque_lookout_2.jpg",
+      "assets/images/places/spanish_mosque_lookout_3.jpg"
+    ],
+    "tags": [
+      "Sunset",
+      "Viewpoint",
+      "Photography",
+      "Iconic Walk"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Emilien Lebourgeois - Public domain - https://commons.wikimedia.org/wiki/File:20230914_14h1515Em_Chefchaouen_(53256122056).jpg",
+      "Emilien Lebourgeois - Public domain - https://commons.wikimedia.org/wiki/File:20230914_14h1617Em_Chefchaouen_(53255237732).jpg",
+      "Badr Rachadi - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Chefchaouen-blue-city-during-thesunset.jpg"
+    ]
+  },
+  {
+    "id": "mount_jbel_musa",
+    "name": "Jbel Musa Mountain",
+    "city": "Belyounech",
+    "category": "Mountains",
+    "shortDescription": "Coastal mountain summit facing Gibraltar across the sea.",
+    "description": "Also known as the Pillars of Hercules opposite Gibraltar, Jbel Musa rises steeply from the Mediterranean waters. The summit hike rewards climbers with views of two continents.",
+    "whyVisit": "View two continents (Africa & Europe), coastal mountain ridge hike.",
+    "bestTimeToVisit": "April to November",
+    "estimatedDuration": "4 - 6 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.898,
+    "longitude": -5.412,
+    "images": [
+      "assets/images/places/mount_jbel_musa_1.jpg",
+      "assets/images/places/mount_jbel_musa_2.jpg",
+      "assets/images/places/mount_jbel_musa_3.jpg"
+    ],
+    "tags": [
+      "Pillars of Hercules",
+      "Strait View",
+      "Ridge Hike",
+      "Coastal Mountain"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Xemenendura - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Adra_n_Musa_0.jpg",
+      "Xemenendura - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Adrar_n_Musa.jpg",
+      "Xemenendura - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Adrar_n_Musa_0.jpg"
+    ]
+  },
+  {
+    "id": "tetouan_medina_unesco",
+    "name": "Medina of Tetouan UNESCO",
+    "city": "Tetouan",
+    "category": "History",
+    "shortDescription": "Authentic 15th-century Andalusian medina with white fortress walls.",
+    "description": "One of Morocco's best preserved medinas, Tetouan served as the main point of contact between Morocco and Andalusia. Features artisan guilds, whitewashed houses, and historic gates.",
+    "whyVisit": "Unspoiled UNESCO heritage, authentic artisan souks, Spanish-Moorish architecture.",
+    "bestTimeToVisit": "Year-round",
+    "estimatedDuration": "3 - 5 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.571,
+    "longitude": -5.368,
+    "images": [
+      "assets/images/places/tetouan_medina_unesco_1.jpg",
+      "assets/images/places/tetouan_medina_unesco_2.jpg",
+      "assets/images/places/tetouan_medina_unesco_3.jpg"
+    ],
+    "tags": [
+      "UNESCO",
+      "Andalusian",
+      "Historic Medina",
+      "Architecture"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Yamen - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Medina_de_Tetouan_Nov2020_001.jpg",
+      "Yamen - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Medina_de_Tetouan_Nov2020_002.jpg",
+      "Yamen - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Medina_de_Tetouan_Nov2020_008.jpg"
+    ]
+  },
+  {
+    "id": "kasbah_museum_tangier",
+    "name": "Kasbah Museum of Tangier",
+    "city": "Tangier",
+    "category": "History",
+    "shortDescription": "Sultan palace museum of Mediterranean antiquities.",
+    "description": "Housed in the 17th-century Dar el-Makhzen palace at the highest point of Tangier's Kasbah. Features Roman mosaics from Volubilis, ancient coins, and peaceful Andalusian courtyard gardens.",
+    "whyVisit": "Royal palace architecture, Roman mosaic floors, sweeping harbor views.",
+    "bestTimeToVisit": "Tuesday to Sunday (10:00 - 18:00)",
+    "estimatedDuration": "1.5 - 2.5 Hours",
+    "priceInfo": "20 MAD Entry",
+    "latitude": 35.789,
+    "longitude": -5.813,
+    "images": [
+      "assets/images/places/kasbah_museum_tangier_1.jpg",
+      "assets/images/places/kasbah_museum_tangier_2.jpg",
+      "assets/images/places/kasbah_museum_tangier_3.jpg"
+    ],
+    "tags": [
+      "Palace Museum",
+      "Mosaics",
+      "Kasbah",
+      "History"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Diego Delso - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Kasbah,_T%C3%A1nger,_Marruecos,_2015-12-11,_DD_26.JPG",
+      "رشيدة رقي - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Kasbah_2.jpg",
+      "David Jones from Isle of Wight, United Kingdom - CC BY 2.0 - https://commons.wikimedia.org/wiki/File:Kasbah_Museum,_Tangier_(48388382846).jpg"
+    ]
+  },
+  {
+    "id": "asilah_ramparts_medina",
+    "name": "Asilah Sea Ramparts & Medina",
+    "city": "Asilah",
+    "category": "History",
+    "shortDescription": "Whitewashed oceanfront medina surrounded by 15th-century Portuguese walls.",
+    "description": "Asilah's peaceful medina is surrounded by formidable oceanfront ramparts built by the Portuguese in the 1400s. Known for art murals, wrought-iron windows, and Atlantic sea waves.",
+    "whyVisit": "Ocean wave ramparts, street art murals, serene coastal historic strolls.",
+    "bestTimeToVisit": "Year-round",
+    "estimatedDuration": "2 - 4 Hours",
+    "priceInfo": "Free Access",
+    "latitude": 35.465,
+    "longitude": -6.037,
+    "images": [
+      "assets/images/places/asilah_ramparts_medina_1.jpg",
+      "assets/images/places/asilah_ramparts_medina_2.jpg",
+      "assets/images/places/asilah_ramparts_medina_3.jpg"
+    ],
+    "tags": [
+      "Portuguese Fort",
+      "Ramparts",
+      "Oceanfront",
+      "Art Medina"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "August Dominus - CC0 - https://commons.wikimedia.org/wiki/File:ASILAH_2024.jpg",
+      "August Dominus - CC0 - https://commons.wikimedia.org/wiki/File:ASILAH_27.11.2024.jpg",
+      "August Dominus - CC0 - https://commons.wikimedia.org/wiki/File:Asilah,_Maroko.jpg"
+    ]
+  },
+  {
+    "id": "lickus_roman_ruins",
+    "name": "Lixus Archaeological Ruins",
+    "city": "Larache",
+    "category": "History",
+    "shortDescription": "Ancient Phoenician-Roman city atop a hill overlooking the Loukkos river.",
+    "description": "One of the oldest continuously inhabited urban centers in North Africa, dating back to 1000 BC. Ruins include a Roman amphitheater, garum fish processing vats, and temples.",
+    "whyVisit": "Over 3,000 years of history, Roman amphitheater, river valley views.",
+    "bestTimeToVisit": "October to May",
+    "estimatedDuration": "2 - 3 Hours",
+    "priceInfo": "10 MAD Entry",
+    "latitude": 35.201,
+    "longitude": -6.108,
+    "images": [
+      "assets/images/places/lickus_roman_ruins_1.jpg",
+      "assets/images/places/lickus_roman_ruins_2.jpg",
+      "assets/images/places/lickus_roman_ruins_3.jpg"
+    ],
+    "tags": [
+      "Roman Ruins",
+      "Phoenician",
+      "Archaeology",
+      "Amphitheater"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "Ideophagous - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Ruins_at_Lixus_archaeological_site.jpg",
+      "Ideophagous - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Ruins_at_Lixus_archaeological_site_100.jpg",
+      "Ideophagous - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Ruins_at_Lixus_archaeological_site_101.jpg"
+    ]
+  },
+  {
+    "id": "restaurant_al_khattabi",
+    "name": "Restaurant Al Khattabi",
+    "city": "Chefchaouen",
+    "category": "Restaurants",
+    "shortDescription": "Cozy medina eatery serving homemade Berber tagines.",
+    "description": "Family-run restaurant tucked inside the blue medina of Chefchaouen, famous for slow-cooked goat tagine with prunes, fresh mountain goat cheese, and warm stone-baked bread.",
+    "whyVisit": "Authentic mountain tagines, fresh goat cheese, welcoming local hospitality.",
+    "bestTimeToVisit": "Lunch & Dinner",
+    "estimatedDuration": "1 - 1.5 Hours",
+    "priceInfo": "$ - Budget Friendly",
+    "latitude": 35.1705,
+    "longitude": -5.268,
+    "images": [
+      "assets/images/places/restaurant_al_khattabi_1.jpg",
+      "assets/images/places/restaurant_al_khattabi_2.jpg"
+    ],
+    "tags": [
+      "Tagine",
+      "Berber Kitchen",
+      "Goat Cheese",
+      "Chefchaouen"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "el_reducto_restaurant",
+    "name": "El Reducto Andalusian Restaurant",
+    "city": "Tetouan",
+    "category": "Restaurants",
+    "shortDescription": "Atmospheric Moorish palace dining in Tetouan Medina.",
+    "description": "Set inside a grand restored Riad on the edge of Tetouan's Medina, El Reducto serves Andalusian-Moroccan specialties like pastilla, roasted lamb shoulder, and gazpacho.",
+    "whyVisit": "Palatial zellige decor, live traditional lute music, Andalusian flavor menu.",
+    "bestTimeToVisit": "Dinner",
+    "estimatedDuration": "1.5 - 2.5 Hours",
+    "priceInfo": "$$ - Moderate",
+    "latitude": 35.57,
+    "longitude": -5.369,
+    "images": [
+      "assets/images/places/el_reducto_restaurant_1.jpg",
+      "assets/images/places/el_reducto_restaurant_2.jpg",
+      "assets/images/places/el_reducto_restaurant_3.jpg"
+    ],
+    "tags": [
+      "Andalusian",
+      "Riad Dining",
+      "Pastilla",
+      "Tetouan"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "restaurant_saveur_du_poisson",
+    "name": "Saveur du Poisson",
+    "city": "Tangier",
+    "category": "Restaurants",
+    "shortDescription": "Rustic wooden fish tavern serving set menus of Atlantic catches.",
+    "description": "An legendary Tangier institution where guests sit at communal wooden benches and enjoy a fixed daily menu of fish soup, grilled baby shark, wild sea bass, and house-brewed berry honey juice.",
+    "whyVisit": "Unique rustic dining tradition, house-made wild juices, daily sea catch.",
+    "bestTimeToVisit": "Lunch & Dinner",
+    "estimatedDuration": "1 - 2 Hours",
+    "priceInfo": "$$ - Moderate",
+    "latitude": 35.783,
+    "longitude": -5.812,
+    "images": [
+      "assets/images/places/restaurant_saveur_du_poisson_1.jpg",
+      "assets/images/places/restaurant_saveur_du_poisson_2.jpg",
+      "assets/images/places/restaurant_saveur_du_poisson_3.jpg"
+    ],
+    "tags": [
+      "Fresh Fish",
+      "Set Menu",
+      "Tangier Legend",
+      "Local Juice"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "casa_pepe_asilah",
+    "name": "Casa Pepe Seafood & Tapas",
+    "city": "Asilah",
+    "category": "Restaurants",
+    "shortDescription": "Spanish-influenced seaside dining with fresh Atlantic seafood.",
+    "description": "Located just outside Asilah's medina gate, Casa Pepe is celebrated for paella marinera, garlic shrimp, fried calamari, and oceanfront terrace dining.",
+    "whyVisit": "Fresh seafood paella, outdoor terrace breezes, Spanish tapas style.",
+    "bestTimeToVisit": "Lunch & Dinner",
+    "estimatedDuration": "1.5 - 2 Hours",
+    "priceInfo": "$$ - Moderate",
+    "latitude": 35.467,
+    "longitude": -6.035,
+    "images": [
+      "assets/images/places/casa_pepe_asilah_1.jpg",
+      "assets/images/places/casa_pepe_asilah_2.jpg",
+      "assets/images/places/casa_pepe_asilah_3.jpg",
+      "assets/images/places/casa_pepe_asilah_4.jpg"
+    ],
+    "tags": [
+      "Paella",
+      "Seafood Tapas",
+      "Terrace",
+      "Asilah"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "restaurant_bab_ssour",
+    "name": "Bab Ssour Moroccan Kitchen",
+    "city": "Chefchaouen",
+    "category": "Restaurants",
+    "shortDescription": "Homestyle Moroccan cooking with roof terrace in Chefchaouen.",
+    "description": "Popular with travelers looking for genuine home-cooked Moroccan dishes, Bab Ssour serves lentil soups, harira, vegetarian couscous, and kefta tagine on a charming blue roof terrace.",
+    "whyVisit": "Homestyle cooking recipes, rooftop view, generous portions, fair prices.",
+    "bestTimeToVisit": "Lunch & Dinner",
+    "estimatedDuration": "1 - 1.5 Hours",
+    "priceInfo": "$ - Budget Friendly",
+    "latitude": 35.169,
+    "longitude": -5.267,
+    "images": [
+      "assets/images/places/restaurant_bab_ssour_1.jpg",
+      "assets/images/places/restaurant_bab_ssour_2.jpg",
+      "assets/images/places/restaurant_bab_ssour_3.jpg"
+    ],
+    "tags": [
+      "Rooftop",
+      "Home Cooking",
+      "Couscous",
+      "Vegetarian Options"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "cafe_hafa",
+    "name": "Café Hafa",
+    "city": "Tangier",
+    "category": "Cafes",
+    "shortDescription": "Historic terraced cliffside café overlooking the Strait of Gibraltar.",
+    "description": "Founded in 1921, Café Hafa's stepped stone terraces cling to the cliffside above Marshan. Frequented by famous writers and musicians over the past century for mint tea and sunset sea views.",
+    "whyVisit": "Historic 100-year legacy, cliff terrace looking over Spain, iconic mint tea.",
+    "bestTimeToVisit": "Late Afternoon to Sunset",
+    "estimatedDuration": "1 - 2 Hours",
+    "priceInfo": "Mint Tea 15 MAD",
+    "latitude": 35.791,
+    "longitude": -5.821,
+    "images": [
+      "assets/images/places/cafe_hafa_1.jpg",
+      "assets/images/places/cafe_hafa_2.jpg",
+      "assets/images/places/cafe_hafa_3.jpg"
+    ],
+    "tags": [
+      "Cliffside",
+      "Mint Tea",
+      "Historic",
+      "Sunset View"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "cafe_clock_chefchaouen",
+    "name": "Café Clock Chefchaouen",
+    "city": "Chefchaouen",
+    "category": "Cafes",
+    "shortDescription": "Cultural cafe with rooftop terrace and camel burgers.",
+    "description": "A vibrant cultural crossroad cafe offering cooking workshops, Arabic calligraphy classes, live Oud music, and a multi-level rooftop view across Chefchaouen.",
+    "whyVisit": "Camel burgers, spiced chai, rooftop sunset music, cultural events.",
+    "bestTimeToVisit": "Morning to Evening",
+    "estimatedDuration": "1 - 2.5 Hours",
+    "priceInfo": "$ - Moderate",
+    "latitude": 35.172,
+    "longitude": -5.265,
+    "images": [
+      "assets/images/places/cafe_clock_chefchaouen_1.jpg",
+      "assets/images/places/cafe_clock_chefchaouen_2.jpg",
+      "assets/images/places/cafe_clock_chefchaouen_3.jpg",
+      "assets/images/places/cafe_clock_chefchaouen_4.jpg"
+    ],
+    "tags": [
+      "Rooftop",
+      "Cultural Cafe",
+      "Live Music",
+      "Camel Burger"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "le_grand_cafe_de_paris",
+    "name": "Le Grand Café de Paris",
+    "city": "Tangier",
+    "category": "Cafes",
+    "shortDescription": "Vintage 1920s French boulevard cafe at Place de France.",
+    "description": "An iconic French colonial style café with leather armchairs and large street mirrors. Famous meeting spot for international artists, writers, and film crews in Tangier.",
+    "whyVisit": "Vintage atmosphere, classic espresso, prime people-watching at Place de France.",
+    "bestTimeToVisit": "Morning Coffee or Late Afternoon",
+    "estimatedDuration": "45 - 90 Minutes",
+    "priceInfo": "Coffee 20 MAD",
+    "latitude": 35.779,
+    "longitude": -5.811,
+    "images": [
+      "assets/images/places/le_grand_cafe_de_paris_1.jpg"
+    ],
+    "tags": [
+      "Vintage",
+      "Place de France",
+      "Literary Heritage",
+      "Espresso"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "cafe_rahba_tetouan",
+    "name": "Café Rahba",
+    "city": "Tetouan",
+    "category": "Cafes",
+    "shortDescription": "Traditional medina square cafe serving spiced espresso.",
+    "description": "Located in the heart of Tetouan's ancient spice marketplace, Café Rahba provides outdoor seating under wooden awnings for enjoying espresso and gazelle horn pastries.",
+    "whyVisit": "Medina square bustle, spiced Moroccan coffee, traditional pastries.",
+    "bestTimeToVisit": "Morning or Mid-Afternoon",
+    "estimatedDuration": "45 Minutes",
+    "priceInfo": "Coffee 12 MAD",
+    "latitude": 35.572,
+    "longitude": -5.366,
+    "images": [
+      "assets/images/places/cafe_rahba_tetouan_1.jpg"
+    ],
+    "tags": [
+      "Medina Cafe",
+      "Pastries",
+      "Spiced Coffee",
+      "Tetouan"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "cafe_la_taza_asilah",
+    "name": "Café La Taza",
+    "city": "Asilah",
+    "category": "Cafes",
+    "shortDescription": "Relaxed seaside terrace cafe facing Asilah ramparts.",
+    "description": "A quiet coastal cafe perched next to Bab al-Bahr gate in Asilah, serving fresh orange juice and mint tea with views of Atlantic fishing boats.",
+    "whyVisit": "Atlantic sea breeze, fresh squeezed orange juice, rampart view.",
+    "bestTimeToVisit": "Morning to Evening",
+    "estimatedDuration": "1 Hour",
+    "priceInfo": "Tea & Coffee 15 MAD",
+    "latitude": 35.466,
+    "longitude": -6.036,
+    "images": [
+      "assets/images/places/cafe_la_taza_asilah_1.jpg",
+      "assets/images/places/cafe_la_taza_asilah_2.jpg"
+    ],
+    "tags": [
+      "Seaside Terrace",
+      "Fresh Juice",
+      "Asilah Ramparts",
+      "Mint Tea"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "cafe_panorama_akchour",
+    "name": "Café River Panorama",
+    "city": "Akchour",
+    "category": "Cafes",
+    "shortDescription": "Riverside cafe with wooden tables submerged in cool stream waters.",
+    "description": "Along the hiking path in Akchour canyon, local cafes place wooden tables directly in the shallow, clear river waters so hikers can cool off while drinking sweet mint tea.",
+    "whyVisit": "Sit in river waters, mountain gorge scenery, refreshing pitstop during hike.",
+    "bestTimeToVisit": "Spring to Autumn",
+    "estimatedDuration": "1 Hour",
+    "priceInfo": "Mint Tea 10 MAD",
+    "latitude": 35.223,
+    "longitude": -5.175,
+    "images": [
+      "assets/images/places/cafe_panorama_akchour_1.jpg",
+      "assets/images/places/cafe_panorama_akchour_2.jpg"
+    ],
+    "tags": [
+      "River Seating",
+      "Akchour Canyon",
+      "Hiking Pitstop",
+      "Nature"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "lina_ryad_spa",
+    "name": "Lina Ryad & Spa",
+    "city": "Chefchaouen",
+    "category": "Hotels",
+    "shortDescription": "Luxury boutique riad with indoor heated pool and mountain spa.",
+    "description": "Located in the heart of Chefchaouen's blue medina, Lina Ryad offers tranquil suites, traditional hammam spa treatments, an indoor heated pool, and rooftop views of the Rif peak.",
+    "whyVisit": "Indoor heated pool, luxury hammam spa, rooftop breakfast overlook.",
+    "bestTimeToVisit": "Year-round",
+    "estimatedDuration": "Overnight Stay",
+    "priceInfo": "$$$ - Luxury Riad",
+    "latitude": 35.171,
+    "longitude": -5.269,
+    "images": [
+      "assets/images/places/lina_ryad_spa_1.jpg",
+      "assets/images/places/lina_ryad_spa_2.jpg",
+      "assets/images/places/lina_ryad_spa_3.jpg"
+    ],
+    "tags": [
+      "Luxury Riad",
+      "Hammam Spa",
+      "Heated Pool",
+      "Blue Medina"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "hotel_nord_pinus",
+    "name": "Hotel Nord-Pinus Tangier",
+    "city": "Tangier",
+    "category": "Hotels",
+    "shortDescription": "Historic Kasbah palace hotel with antique Moroccan tiles and sea views.",
+    "description": "Perched on the highest point of the Tangier Kasbah wall, this boutique hotel blends vintage French decor, hand-cut zellige tiles, and views across the Strait of Gibraltar.",
+    "whyVisit": "Kasbah wall location, panoramic Gibraltar Strait views, historic interiors.",
+    "bestTimeToVisit": "Year-round",
+    "estimatedDuration": "Overnight Stay",
+    "priceInfo": "$$$ - Luxury Boutique",
+    "latitude": 35.7885,
+    "longitude": -5.8125,
+    "images": [
+      "assets/images/places/hotel_nord_pinus_1.jpg",
+      "assets/images/places/hotel_nord_pinus_2.jpg"
+    ],
+    "tags": [
+      "Boutique Hotel",
+      "Kasbah Wall",
+      "Antiques",
+      "Strait View"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "banyan_tree_tamouda_bay",
+    "name": "Banyan Tree Tamouda Bay",
+    "city": "Fnideq / M'diq",
+    "category": "Hotels",
+    "shortDescription": "All-villa luxury Mediterranean beach resort with private pools.",
+    "description": "An all-villa luxury beach resort located on Morocco's northern Mediterranean coast. Features private villa pools, hydrotherapy spa, and private golden sand beaches.",
+    "whyVisit": "Private pool villas, Mediterranean beach frontage, luxury spa.",
+    "bestTimeToVisit": "May to October",
+    "estimatedDuration": "Multi-day Stay",
+    "priceInfo": "$$$$ - Ultra Luxury",
+    "latitude": 35.772,
+    "longitude": -5.321,
+    "images": [
+      "assets/images/places/banyan_tree_tamouda_bay_1.jpg",
+      "assets/images/places/banyan_tree_tamouda_bay_2.jpg",
+      "assets/images/places/banyan_tree_tamouda_bay_3.jpg"
+    ],
+    "tags": [
+      "All-Villa",
+      "Private Pool",
+      "Tamouda Bay",
+      "Beachfront"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "riad_el_reducto",
+    "name": "Riad El Reducto",
+    "city": "Tetouan",
+    "category": "Hotels",
+    "shortDescription": "Charming restored Spanish-Moroccan mansion in Tetouan medina.",
+    "description": "Former Spanish protectorate residence restored into a boutique riad with Arabesque arches, central fountain courtyard, and roof terrace looking over Tetouan.",
+    "whyVisit": "Spanish-Moorish heritage, courtyard fountain, central medina location.",
+    "bestTimeToVisit": "Year-round",
+    "estimatedDuration": "Overnight Stay",
+    "priceInfo": "$$ - Moderate",
+    "latitude": 35.5702,
+    "longitude": -5.3692,
+    "images": [
+      "assets/images/places/riad_el_reducto_1.jpg",
+      "assets/images/places/riad_el_reducto_2.jpg",
+      "assets/images/places/riad_el_reducto_3.jpg"
+    ],
+    "tags": [
+      "Historic Mansion",
+      "Courtyard",
+      "Tetouan Medina",
+      "Boutique"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "la_maison_blanche_tangier",
+    "name": "La Maison Blanche Riad",
+    "city": "Tangier",
+    "category": "Hotels",
+    "shortDescription": "Elegant white guest house in the vibrant Kasbah quarter.",
+    "description": "Tucked inside Tangier's Kasbah, La Maison Blanche features light-filled rooms decorated in white linen, wrought iron, and Berber rugs with an open roof terrace.",
+    "whyVisit": "Calm white aesthetic, Kasbah location, friendly guest house service.",
+    "bestTimeToVisit": "Year-round",
+    "estimatedDuration": "Overnight Stay",
+    "priceInfo": "$$ - Moderate",
+    "latitude": 35.787,
+    "longitude": -5.814,
+    "images": [
+      "assets/images/places/la_maison_blanche_tangier_1.jpg",
+      "assets/images/places/la_maison_blanche_tangier_2.jpg",
+      "assets/images/places/la_maison_blanche_tangier_3.jpg"
+    ],
+    "tags": [
+      "Guest House",
+      "Kasbah",
+      "White Riad",
+      "Terrace"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "hotel_parador_chefchaouen",
+    "name": "Hotel Parador Chefchaouen",
+    "city": "Chefchaouen",
+    "category": "Hotels",
+    "shortDescription": "Classic hotel with outdoor pool right beside Place Outa el Hammam.",
+    "description": "Prime location right at the entrance of Chefchaouen's main square. Offers air-conditioned rooms, a large swimming pool, and an outdoor garden restaurant.",
+    "whyVisit": "Steps from main medina square, outdoor swimming pool, easy vehicle access.",
+    "bestTimeToVisit": "May to October",
+    "estimatedDuration": "Overnight Stay",
+    "priceInfo": "$$ - Moderate",
+    "latitude": 35.1695,
+    "longitude": -5.2685,
+    "images": [
+      "assets/images/places/hotel_parador_chefchaouen_1.jpg",
+      "assets/images/places/hotel_parador_chefchaouen_2.jpg",
+      "assets/images/places/hotel_parador_chefchaouen_3.jpg"
+    ],
+    "tags": [
+      "Central Square",
+      "Outdoor Pool",
+      "Easy Access",
+      "Chefchaouen"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "ensemble_artisanal_chefchaouen",
+    "name": "Ensemble Artisanal Chefchaouen",
+    "city": "Chefchaouen",
+    "category": "Shopping",
+    "shortDescription": "Government artisan complex with live wool weaving and pottery.",
+    "description": "Watch master craftsmen work live on traditional wooden looms weaving colorful wool blankets, carpets, leather goods, and hand-painted pottery at fixed artisan prices.",
+    "whyVisit": "Live craft demonstrations, fixed artisan prices, authentic Rif blankets.",
+    "bestTimeToVisit": "Monday to Saturday (09:00 - 18:00)",
+    "estimatedDuration": "1 - 2 Hours",
+    "priceInfo": "Direct Artisan Prices",
+    "latitude": 35.1685,
+    "longitude": -5.271,
+    "images": [
+      "assets/images/places/ensemble_artisanal_chefchaouen_1.jpg",
+      "assets/images/places/ensemble_artisanal_chefchaouen_2.jpg",
+      "assets/images/places/ensemble_artisanal_chefchaouen_3.jpg"
+    ],
+    "tags": [
+      "Artisan Complex",
+      "Hand Weaving",
+      "Pottery",
+      "Fixed Price"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "petit_socco_souks",
+    "name": "Petit Socco & Leather Souk",
+    "city": "Tangier",
+    "category": "Shopping",
+    "shortDescription": "Bustling medina market square famous for leather crafts and spices.",
+    "description": "The historic heart of Tangier's medina. Narrow alleyways lead from the square into specialized souks selling hand-stitched leather bags, babouche slippers, brass lanterns, and aromatic spices.",
+    "whyVisit": "Handmade leather bags, babouche slippers, vibrant medina market energy.",
+    "bestTimeToVisit": "10:00 - 19:00",
+    "estimatedDuration": "2 - 3 Hours",
+    "priceInfo": "Bargaining Expected",
+    "latitude": 35.7845,
+    "longitude": -5.8115,
+    "images": [
+      "assets/images/places/petit_socco_souks_1.jpg",
+      "assets/images/places/petit_socco_souks_2.jpg",
+      "assets/images/places/petit_socco_souks_3.jpg"
+    ],
+    "tags": [
+      "Leather Souk",
+      "Petit Socco",
+      "Babouche",
+      "Spices"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "tetouan_artisan_school",
+    "name": "Dar El Sanaa Artisan School",
+    "city": "Tetouan",
+    "category": "Shopping",
+    "shortDescription": "Historic school of Andalusian traditional arts and crafts.",
+    "description": "Located near Bab El Okla gate, this 100-year-old school trains young artisans in zellige mosaic tilework, carved painted wood (Zouak), and gold-thread embroidery.",
+    "whyVisit": "Master craftsmen at work, authentic zellige mosaic gifts, royal craft heritage.",
+    "bestTimeToVisit": "Weekdays (09:00 - 16:00)",
+    "estimatedDuration": "1 - 1.5 Hours",
+    "priceInfo": "Free Entry",
+    "latitude": 35.573,
+    "longitude": -5.365,
+    "images": [
+      "assets/images/places/tetouan_artisan_school_1.jpg",
+      "assets/images/places/tetouan_artisan_school_2.jpg",
+      "assets/images/places/tetouan_artisan_school_3.jpg"
+    ],
+    "tags": [
+      "Zellige Mosaic",
+      "Artisan School",
+      "Wood Carving",
+      "Tetouan"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "bazaar_al_andalous",
+    "name": "Bazaar Al Andalous",
+    "city": "Tangier",
+    "category": "Shopping",
+    "shortDescription": "Multi-story antique bazaar filled with Berber rugs and brass teapots.",
+    "description": "A treasure trove of authentic Moroccan antiques. Browse hand-knotted tribal Berber rugs, vintage silver jewelry, carved cedar chests, and engraved copper teapots.",
+    "whyVisit": "Tribal Berber rugs, vintage jewelry, shipping assistance worldwide.",
+    "bestTimeToVisit": "10:00 - 18:00",
+    "estimatedDuration": "1 - 2 Hours",
+    "priceInfo": "Negotiable Items",
+    "latitude": 35.785,
+    "longitude": -5.812,
+    "images": [
+      "assets/images/places/souk_el_hout_tetouan_1.jpg",
+      "assets/images/places/souk_el_hout_tetouan_2.jpg",
+      "assets/images/places/souk_el_hout_tetouan_3.jpg"
+    ],
+    "tags": [
+      "Berber Rugs",
+      "Antiques",
+      "Brass Teapots",
+      "Jewelry"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "asilah_art_galleries",
+    "name": "Asilah Art Center & Murals",
+    "city": "Asilah",
+    "category": "Shopping",
+    "shortDescription": "Outdoor mural street art and local painter galleries.",
+    "description": "Asilah's medina is an open-air art gallery. Local painters and international artists sell original canvas paintings, art prints, and handcrafted ceramics in medina studios.",
+    "whyVisit": "Original canvas art, vibrant street murals, handmade pottery.",
+    "bestTimeToVisit": "Year-round",
+    "estimatedDuration": "1.5 - 2.5 Hours",
+    "priceInfo": "Free Outdoor Gallery",
+    "latitude": 35.4655,
+    "longitude": -6.0365,
+    "images": [
+      "assets/images/places/asilah_art_galleries_1.jpg",
+      "assets/images/places/asilah_art_galleries_2.jpg",
+      "assets/images/places/asilah_art_galleries_3.jpg"
+    ],
+    "tags": [
+      "Street Art",
+      "Painters",
+      "Art Prints",
+      "Open-Air Gallery"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  },
+  {
+    "id": "souk_el_hout_tetouan",
+    "name": "Souk El Hout Fresh Produce & Spices",
+    "city": "Tetouan",
+    "category": "Shopping",
+    "shortDescription": "Vibrant square selling northern flower waters, olives, and spices.",
+    "description": "A picturesque open square in Tetouan's medina where Rif mountain women sell fresh mint, distilled orange blossom water, wild flower honey, olives, and mountain herbs.",
+    "whyVisit": "Distilled orange blossom water, mountain honey, local olives, flower waters.",
+    "bestTimeToVisit": "Morning (08:00 - 13:00)",
+    "estimatedDuration": "1 Hour",
+    "priceInfo": "Local Market Prices",
+    "latitude": 35.5715,
+    "longitude": -5.3675,
+    "images": [
+      "assets/images/places/bazaar_al_andalous_1.jpg",
+      "assets/images/places/bazaar_al_andalous_2.jpg",
+      "assets/images/places/bazaar_al_andalous_3.jpg"
+    ],
+    "tags": [
+      "Orange Blossom Water",
+      "Spices",
+      "Olives",
+      "Mountain Women Market"
+    ],
+    "isFavorite": false,
+    "isFeatured": false,
+    "isTrending": false,
+    "verified": true,
+    "imageCredits": [
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload",
+      "User Contributed Photo - Local Original Upload"
+    ]
+  }
+]

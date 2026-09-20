@@ -1,9 +1,45 @@
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/constants/app_constants.dart';
 import '../models/place_model.dart';
-import '../datasource/morocco_dummy_data.dart';
+import '../models/category_model.dart';
+
+String _removeAccents(String text) {
+  const withAccents = 'àáâãäåòóôõöøèéêëçìíîïùúûüñÿÀÁÂÃÄÅÒÓÔÕÖØÈÉÊËÇÌÍÎÏÙÚÛÜÑÝ’\'';
+  const withoutAccents = 'aaaaaaoooooeeeeciiiiuuuunyAAAAAAOOOOOOEEEECIIIIUUUUNY  ';
+  var result = text;
+  for (int i = 0; i < withAccents.length; i++) {
+    result = result.replaceAll(withAccents[i], withoutAccents[i]);
+  }
+  return result;
+}
 
 class DestinationRepository {
-  List<PlaceModel> _places = List.from(MoroccoDummyData.places);
+  List<PlaceModel> _allRawPlaces = [];
+
+  DestinationRepository([List<PlaceModel>? initialPlaces]) {
+    if (initialPlaces != null && initialPlaces.isNotEmpty) {
+      _allRawPlaces = List.from(initialPlaces);
+    }
+  }
+
+  void setPlaces(List<PlaceModel> places) {
+    _allRawPlaces = List.from(places);
+  }
+
+  /// Returns places filtered by build mode:
+  /// - In release builds (kReleaseMode), only returns verified places with at least 1 image.
+  /// - In debug/profile builds, returns all places.
+  List<PlaceModel> get _places {
+    if (kReleaseMode) {
+      return _allRawPlaces.where((p) {
+        return p.verified && p.images.isNotEmpty && p.images.first.isNotEmpty;
+      }).toList();
+    }
+    return _allRawPlaces;
+  }
 
   List<PlaceModel> getAllPlaces() => _places;
 
@@ -28,48 +64,123 @@ class DestinationRepository {
     }
   }
 
+  /// Accent-insensitive & case-insensitive search across name, city, category, tags, and description
   List<PlaceModel> searchPlaces(String query) {
-    if (query.trim().isEmpty) return _places;
-    final q = query.toLowerCase();
+    final trimmed = query.trim();
+    if (trimmed.isEmpty) return _places;
+
+    final q = _removeAccents(trimmed.toLowerCase());
+
     return _places.where((p) {
-      return p.name.toLowerCase().contains(q) ||
-          p.city.toLowerCase().contains(q) ||
-          p.category.toLowerCase().contains(q) ||
-          p.tags.any((t) => t.toLowerCase().contains(q));
+      final nameNorm = _removeAccents(p.name.toLowerCase());
+      final cityNorm = _removeAccents(p.city.toLowerCase());
+      final catNorm = _removeAccents(p.category.toLowerCase());
+      final descNorm = _removeAccents(p.shortDescription.toLowerCase());
+
+      if (nameNorm.contains(q) ||
+          cityNorm.contains(q) ||
+          catNorm.contains(q) ||
+          descNorm.contains(q)) {
+        return true;
+      }
+
+      return p.tags.any((t) => _removeAccents(t.toLowerCase()).contains(q));
+    }).toList();
+  }
+
+  /// Returns distinct list of cities from visible places
+  List<String> getAvailableCities() {
+    final cities = _places.map((p) => p.city).toSet().toList();
+    cities.sort();
+    return cities;
+  }
+
+  /// Returns only categories that have at least kMinPlacesPerCategory visible places
+  List<CategoryModel> getAvailableCategories() {
+    final Map<String, int> counts = {};
+    for (final p in _places) {
+      final key = p.category.toLowerCase();
+      counts[key] = (counts[key] ?? 0) + 1;
+    }
+
+    return CategoryModel.allCategories.where((cat) {
+      final count = counts[cat.id.toLowerCase()] ?? 0;
+      return count >= AppConstants.kMinPlacesPerCategory;
     }).toList();
   }
 
   void toggleFavorite(String id) {
-    _places = _places.map((p) {
+    _allRawPlaces = _allRawPlaces.map((p) {
       if (p.id == id) {
         return p.copyWith(isFavorite: !p.isFavorite);
       }
       return p;
     }).toList();
   }
+
+  /// Helper to load places directly from assets/data/places.json
+  static Future<List<PlaceModel>> loadPlacesFromJsonAsset() async {
+    try {
+      final jsonString =
+          await rootBundle.loadString(AppConstants.placesJsonPath);
+      final List<dynamic> list = jsonDecode(jsonString);
+      return list.map((json) => PlaceModel.fromJson(json)).toList();
+    } catch (e) {
+      return [];
+    }
+  }
 }
 
-// Providers
-final destinationRepositoryProvider = Provider<DestinationRepository>((ref) {
-  return DestinationRepository();
+// Global Repository State Notifier for Riverpod
+class DestinationRepositoryNotifier
+    extends StateNotifier<DestinationRepository> {
+  DestinationRepositoryNotifier() : super(DestinationRepository());
+
+  Future<void> loadPlaces() async {
+    final places = await DestinationRepository.loadPlacesFromJsonAsset();
+    final repo = DestinationRepository(places);
+    state = repo;
+  }
+
+  void toggleFavorite(String id) {
+    state.toggleFavorite(id);
+    state = DestinationRepository(state.getAllPlaces());
+  }
+}
+
+final destinationRepositoryProvider = StateNotifierProvider<
+    DestinationRepositoryNotifier, DestinationRepository>((ref) {
+  final notifier = DestinationRepositoryNotifier();
+  notifier.loadPlaces();
+  return notifier;
 });
 
 class FavoritesNotifier extends StateNotifier<List<PlaceModel>> {
-  FavoritesNotifier(this._repository)
-      : super(_repository.getAllPlaces().where((p) => p.isFavorite).toList());
+  FavoritesNotifier(this._ref) : super([]) {
+    _updateFavorites();
+  }
 
-  final DestinationRepository _repository;
+  final Ref _ref;
+
+  void _updateFavorites() {
+    final repo = _ref.read(destinationRepositoryProvider);
+    state = repo.getAllPlaces().where((p) => p.isFavorite).toList();
+  }
 
   void toggleFavorite(String id) {
-    _repository.toggleFavorite(id);
-    state = _repository.getAllPlaces().where((p) => p.isFavorite).toList();
+    _ref.read(destinationRepositoryProvider.notifier).toggleFavorite(id);
+    _updateFavorites();
+  }
+
+  void refresh() {
+    _updateFavorites();
   }
 }
 
 final favoritesProvider =
     StateNotifierProvider<FavoritesNotifier, List<PlaceModel>>((ref) {
-  final repo = ref.watch(destinationRepositoryProvider);
-  return FavoritesNotifier(repo);
+  ref.watch(destinationRepositoryProvider);
+  return FavoritesNotifier(ref);
 });
 
 // Theme Mode Provider

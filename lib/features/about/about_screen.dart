@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_constants.dart';
 
@@ -40,19 +41,28 @@ class AboutScreen extends StatelessWidget {
                   style: TextStyle(color: AppColors.secondary, fontSize: 14),
                 ),
                 const SizedBox(height: 6),
-                const Text(
-                  'Version 1.0.0 • Guide Touristique',
-                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                FutureBuilder<PackageInfo>(
+                  future: PackageInfo.fromPlatform(),
+                  builder: (context, snapshot) {
+                    final versionText = snapshot.hasData
+                        ? 'Version ${snapshot.data!.version} (${snapshot.data!.buildNumber}) • Travel Guide'
+                        : 'Version 1.0.1 • Travel Guide';
+                    return Text(
+                      versionText,
+                      style: const TextStyle(color: Colors.grey, fontSize: 12),
+                    );
+                  },
                 ),
               ],
             ),
           ),
 
+
           const SizedBox(height: 28),
 
           // About Project Description
           const Text(
-            '📌 À propos du projet',
+            '📌 About the Project',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
@@ -63,8 +73,8 @@ class AboutScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: const Text(
-              'Chamal Way est votre guide touristique interactif pour découvrir toutes les richesses du Nord du Maroc. '
-              'Explorez les ruelles bleues de Chefchaouen, les magnifiques plages de Tanger, Martil et Al Hoceima, les cascades féeriques d\'Akchour ainsi que le riche patrimoine historique de la région.',
+              'Chamal Way is your interactive travel companion to explore the best destinations in Northern Morocco. '
+              'Discover the blue-washed streets of Chefchaouen, stunning beaches of Tangier, Martil, and Al Hoceima, the enchanted waterfalls of Akchour, and the rich historical heritage of the region.',
               style: TextStyle(fontSize: 14, height: 1.5),
             ),
           ),
@@ -115,7 +125,7 @@ class AboutScreen extends StatelessWidget {
             ),
           ),
 
-
+          const SizedBox(height: 28),
 
           // Local Travel Tips
           const Text(
