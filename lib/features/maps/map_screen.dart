@@ -177,8 +177,24 @@ class _MapScreenState extends ConsumerState<MapScreen> {
                     '© OpenStreetMap contributors',
                     onTap: () async {
                       final url = Uri.parse('https://www.openstreetmap.org/copyright');
-                      if (await canLaunchUrl(url)) {
-                        await launchUrl(url);
+                      try {
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url, mode: LaunchMode.externalApplication);
+                        } else if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Could not open OpenStreetMap copyright page.'),
+                            ),
+                          );
+                        }
+                      } catch (_) {
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Error opening link.'),
+                            ),
+                          );
+                        }
                       }
                     },
                   ),

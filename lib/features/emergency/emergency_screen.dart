@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_constants.dart';
@@ -78,16 +79,65 @@ class EmergencyScreen extends StatelessWidget {
                   ),
                   onTap: () async {
                     final phoneUri = Uri.parse('tel:${entry.value}');
+                    bool launched = false;
                     try {
-                      await launchUrl(phoneUri);
-                    } catch (_) {
-                      if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Unable to call ${entry.value}'),
-                          ),
-                        );
+                      if (await canLaunchUrl(phoneUri)) {
+                        launched = await launchUrl(phoneUri);
                       }
+                    } catch (_) {}
+
+                    if (!launched && context.mounted) {
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          title: Text(entry.key),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Text('Phone calls are not supported on this device.'),
+                              const SizedBox(height: 16),
+                              SelectableText(
+                                entry.value,
+                                style: const TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.primary,
+                                ),
+                              ),
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(ctx),
+                              child: const Text('Close'),
+                            ),
+                            ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.primary,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12)),
+                              ),
+                              onPressed: () {
+                                Clipboard.setData(
+                                    ClipboardData(text: entry.value));
+                                Navigator.pop(ctx);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'Copied ${entry.value} to clipboard!'),
+                                    duration: const Duration(seconds: 2),
+                                  ),
+                                );
+                              },
+                              icon: const Icon(Icons.copy, size: 18, color: Colors.white),
+                              label: const Text('Copy',
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ],
+                        ),
+                      );
                     }
                   },
                 );

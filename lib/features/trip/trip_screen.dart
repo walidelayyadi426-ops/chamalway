@@ -53,7 +53,27 @@ class _TripScreenState extends ConsumerState<TripScreen> {
       return;
     }
 
-    Share.share(buffer.toString(), subject: 'My Northern Morocco Trip Itinerary');
+    final renderObject = context.findRenderObject();
+    Rect shareOrigin;
+    if (renderObject is RenderBox &&
+        renderObject.hasSize &&
+        renderObject.size.width > 0 &&
+        renderObject.size.height > 0) {
+      final position = renderObject.localToGlobal(Offset.zero);
+      shareOrigin = position & renderObject.size;
+    } else {
+      final size = MediaQuery.of(context).size;
+      shareOrigin =
+          Rect.fromLTWH(size.width / 2 - 1, size.height / 2 - 1, 2, 2);
+    }
+
+    SharePlus.instance.share(
+      ShareParams(
+        text: buffer.toString(),
+        subject: 'My Northern Morocco Trip Itinerary',
+        sharePositionOrigin: shareOrigin,
+      ),
+    );
   }
 
   void _handleDaysCountChange(BuildContext context, WidgetRef ref, int currentCount, int newCount) {
@@ -104,10 +124,12 @@ class _TripScreenState extends ConsumerState<TripScreen> {
       appBar: AppBar(
         title: const Text('🧳 My Trip Itinerary'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.share_outlined),
-            tooltip: 'Share Itinerary',
-            onPressed: () => _shareTripItinerary(context, tripState, repo),
+          Builder(
+            builder: (btnContext) => IconButton(
+              icon: const Icon(Icons.share_outlined),
+              tooltip: 'Share Itinerary',
+              onPressed: () => _shareTripItinerary(btnContext, tripState, repo),
+            ),
           ),
         ],
       ),

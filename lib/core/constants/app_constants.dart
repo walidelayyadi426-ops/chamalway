@@ -5,9 +5,8 @@ class AppConstants {
   static const String placesJsonPath = 'assets/data/places.json';
 
   static const Map<String, String> emergencyNumbers = {
-    'Police (Police Secours)': '19',
-    'Gendarmerie Royale': '177',
-    'Ambulance & Sapeurs-Pompiers': '15',
-    'Assistance Médicale Urgente (SAMU)': '141',
+    'Police Secours (Urban)': '19',
+    'Ambulance & Protection Civile': '15',
+    'Gendarmerie Royale (Rural)': '177',
   };
 }

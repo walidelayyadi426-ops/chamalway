@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/constants/app_constants.dart';
 import '../models/place_model.dart';
 import '../models/category_model.dart';
@@ -136,15 +137,52 @@ class DestinationRepositoryNotifier
     extends StateNotifier<DestinationRepository> {
   DestinationRepositoryNotifier() : super(DestinationRepository());
 
+  static const String _favoritesKey = 'favorite_place_ids';
+
   Future<void> loadPlaces() async {
     final places = await DestinationRepository.loadPlacesFromJsonAsset();
-    final repo = DestinationRepository(places);
+    var repo = DestinationRepository(places);
+
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final savedFavIds = prefs.getStringList(_favoritesKey) ?? [];
+      if (savedFavIds.isNotEmpty) {
+        repo = _applyFavoriteIds(repo, savedFavIds);
+      }
+    } catch (_) {}
+
     state = repo;
   }
 
-  void toggleFavorite(String id) {
+  DestinationRepository _applyFavoriteIds(
+      DestinationRepository repo, List<String> savedFavIds) {
+    final validPlaceIds = repo.getAllPlaces().map((p) => p.id).toSet();
+    final updated = repo.getAllPlaces().map((p) {
+      if (savedFavIds.contains(p.id) && validPlaceIds.contains(p.id)) {
+        return p.copyWith(isFavorite: true);
+      }
+      return p;
+    }).toList();
+    return DestinationRepository(updated);
+  }
+
+  void loadSavedFavoritesFromList(List<String> savedFavIds) {
+    state = _applyFavoriteIds(state, savedFavIds);
+  }
+
+  Future<void> toggleFavorite(String id) async {
     state.toggleFavorite(id);
     state = DestinationRepository(state.getAllPlaces());
+
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final favIds = state
+          .getAllPlaces()
+          .where((p) => p.isFavorite)
+          .map((p) => p.id)
+          .toList();
+      await prefs.setStringList(_favoritesKey, favIds);
+    } catch (_) {}
   }
 }
 
@@ -183,12 +221,27 @@ final favoritesProvider =
   return FavoritesNotifier(ref);
 });
 
-// Theme Mode Provider
+// Theme Mode Provider with SharedPreferences persistence
 class ThemeModeNotifier extends StateNotifier<bool> {
-  ThemeModeNotifier() : super(false); // false = Light, true = Dark
+  ThemeModeNotifier() : super(false) {
+    _loadTheme();
+  }
 
-  void toggleTheme() {
+  static const String _themeKey = 'is_dark_mode';
+
+  Future<void> _loadTheme() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      state = prefs.getBool(_themeKey) ?? false;
+    } catch (_) {}
+  }
+
+  Future<void> toggleTheme() async {
     state = !state;
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(_themeKey, state);
+    } catch (_) {}
   }
 }
 

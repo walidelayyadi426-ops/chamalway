@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import '../../core/constants/app_colors.dart';
 import '../../data/repositories/destination_repository.dart';
 
@@ -94,17 +95,7 @@ class SettingsScreen extends ConsumerWidget {
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => context.push('/emergency'),
                   ),
-                  if (ref.watch(destinationRepositoryProvider).getAllPlaces().any((p) => p.imageCredits.isNotEmpty)) ...[
-                    const Divider(height: 1),
-                    ListTile(
-                      leading: const Icon(Icons.camera_alt_outlined,
-                          color: AppColors.primary),
-                      title: const Text('Photo Credits'),
-                      subtitle: const Text('Photo sources and attributions'),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () => context.push('/credits'),
-                    ),
-                  ],
+
                 ],
               ),
             ),
@@ -112,9 +103,17 @@ class SettingsScreen extends ConsumerWidget {
             const SizedBox(height: 30),
 
             // App Version Footer
-            const Text(
-              'Chamal Way v1.0.1',
-              style: TextStyle(color: Colors.grey, fontSize: 12),
+            FutureBuilder<PackageInfo>(
+              future: PackageInfo.fromPlatform(),
+              builder: (context, snapshot) {
+                final versionText = snapshot.hasData
+                    ? 'Chamal Way v${snapshot.data!.version} (Build ${snapshot.data!.buildNumber})'
+                    : 'Chamal Way';
+                return Text(
+                  versionText,
+                  style: const TextStyle(color: Colors.grey, fontSize: 12),
+                );
+              },
             ),
           ],
         ),

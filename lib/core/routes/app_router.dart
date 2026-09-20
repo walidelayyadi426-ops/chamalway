@@ -9,7 +9,6 @@ import '../../features/historical/historical_screen.dart';
 import '../../features/restaurants/restaurants_screen.dart';
 import '../../features/hotels/hotels_screen.dart';
 import '../../features/settings/settings_screen.dart';
-import '../../features/settings/photo_credits_screen.dart';
 import '../../features/about/about_screen.dart';
 import '../../features/emergency/emergency_screen.dart';
 
@@ -76,10 +75,7 @@ class AppRouter {
         path: '/settings',
         builder: (context, state) => const SettingsScreen(),
       ),
-      GoRoute(
-        path: '/credits',
-        builder: (context, state) => const PhotoCreditsScreen(),
-      ),
+
       GoRoute(
         path: '/about',
         builder: (context, state) => const AboutScreen(),

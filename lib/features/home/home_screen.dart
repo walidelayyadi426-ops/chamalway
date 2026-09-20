@@ -104,23 +104,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Row(
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.notifications_none_rounded),
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('No new notifications'),
-                              ),
-                            );
-                          },
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.settings_outlined),
-                          onPressed: () => context.push('/settings'),
-                        ),
-                      ],
+                    IconButton(
+                      icon: const Icon(Icons.settings_outlined),
+                      onPressed: () => context.push('/settings'),
                     ),
                   ],
                 ),

@@ -45,8 +45,8 @@ class AboutScreen extends StatelessWidget {
                   future: PackageInfo.fromPlatform(),
                   builder: (context, snapshot) {
                     final versionText = snapshot.hasData
-                        ? 'Version ${snapshot.data!.version} (${snapshot.data!.buildNumber}) • Travel Guide'
-                        : 'Version 1.0.1 • Travel Guide';
+                        ? 'Version ${snapshot.data!.version} (Build ${snapshot.data!.buildNumber}) • Travel Guide'
+                        : 'Chamal Way Travel Guide';
                     return Text(
                       versionText,
                       style: const TextStyle(color: Colors.grey, fontSize: 12),
@@ -56,7 +56,6 @@ class AboutScreen extends StatelessWidget {
               ],
             ),
           ),
-
 
           const SizedBox(height: 28),
 
@@ -76,52 +75,6 @@ class AboutScreen extends StatelessWidget {
               'Chamal Way is your interactive travel companion to explore the best destinations in Northern Morocco. '
               'Discover the blue-washed streets of Chefchaouen, stunning beaches of Tangier, Martil, and Al Hoceima, the enchanted waterfalls of Akchour, and the rich historical heritage of the region.',
               style: TextStyle(fontSize: 14, height: 1.5),
-            ),
-          ),
-
-          const SizedBox(height: 28),
-
-          // Sunrise & Sunset Tool Widget
-          const Text(
-            '🌅 Sun & Ocean Tide Times (Tangier)',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              gradient: AppColors.sunsetGradient,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Column(
-                  children: [
-                    Icon(Icons.wb_twilight, color: Colors.white, size: 28),
-                    SizedBox(height: 4),
-                    Text('Sunrise', style: TextStyle(color: Colors.white70)),
-                    Text('06:38 AM',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16)),
-                  ],
-                ),
-                VerticalDivider(color: Colors.white38),
-                Column(
-                  children: [
-                    Icon(Icons.nights_stay, color: Colors.white, size: 28),
-                    SizedBox(height: 4),
-                    Text('Sunset', style: TextStyle(color: Colors.white70)),
-                    Text('08:42 PM',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16)),
-                  ],
-                ),
-              ],
             ),
           ),
 

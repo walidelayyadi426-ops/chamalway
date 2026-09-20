@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../core/constants/app_colors.dart';
@@ -146,10 +147,29 @@ class _PlaceDetailScreenState extends ConsumerState<PlaceDetailScreen> {
     }
   }
 
-  void _sharePlace(PlaceModel place) {
+  void _sharePlace(BuildContext context, PlaceModel place) {
+    final renderObject = context.findRenderObject();
+    Rect shareOrigin;
+    if (renderObject is RenderBox &&
+        renderObject.hasSize &&
+        renderObject.size.width > 0 &&
+        renderObject.size.height > 0) {
+      final position = renderObject.localToGlobal(Offset.zero);
+      shareOrigin = position & renderObject.size;
+    } else {
+      final size = MediaQuery.of(context).size;
+      shareOrigin =
+          Rect.fromLTWH(size.width / 2 - 1, size.height / 2 - 1, 2, 2);
+    }
     final text =
         '📍 ${place.name} (${place.city}, Morocco)\n${place.shortDescription}\n\nDiscovered via ChamalWay Travel Guide!';
-    Share.share(text, subject: place.name);
+    SharePlus.instance.share(
+      ShareParams(
+        text: text,
+        subject: place.name,
+        sharePositionOrigin: shareOrigin,
+      ),
+    );
   }
 
   @override
@@ -179,7 +199,13 @@ class _PlaceDetailScreenState extends ConsumerState<PlaceDetailScreen> {
               backgroundColor: Colors.black45,
               child: IconButton(
                 icon: const Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  if (context.canPop()) {
+                    context.pop();
+                  } else {
+                    context.go('/home');
+                  }
+                },
               ),
             ),
             actions: [
@@ -352,12 +378,14 @@ class _PlaceDetailScreenState extends ConsumerState<PlaceDetailScreen> {
                       onTap: () => _openDirections(context, place),
                       isDark: isDark,
                     ),
-                    _buildActionButton(
-                      icon: Icons.share_outlined,
-                      color: AppColors.secondary,
-                      label: 'Share',
-                      onTap: () => _sharePlace(place),
-                      isDark: isDark,
+                    Builder(
+                      builder: (btnContext) => _buildActionButton(
+                        icon: Icons.share_outlined,
+                        color: AppColors.secondary,
+                        label: 'Share',
+                        onTap: () => _sharePlace(btnContext, place),
+                        isDark: isDark,
+                      ),
                     ),
                     _buildActionButton(
                       icon: Icons.add_circle_outline,
